@@ -1,4 +1,4 @@
-#!version 2.2.4
+#!version 2.2.5
 surface
 #!parameters:
 uniform	float	Ka	=	1
@@ -12,6 +12,9 @@ uniform	string	pointcloudname	=	""
 varying	float	amp
 varying	vector	n
 varying	vector	Nf
+varying	vector	V
+varying	float	skin_matte
+varying	vector	glancing_highlight
 varying	vector	Pbake
 varying	float	temporary_0
 uniform	float	temporary_1
@@ -20,8 +23,16 @@ uniform	vector	temporary_3
 varying	vector	P2
 varying	vector	temporary_4
 varying	vector	temporary_5
-varying	vector	temporary_6
-varying	vector	temporary_7
+varying	float	temporary_6
+varying	float	temporary_7
+varying	float	temporary_8
+varying	float	temporary_9
+varying	float	temporary_10
+varying	float	temporary_11
+varying	float	temporary_12
+varying	float	temporary_13
+varying	vector	temporary_14
+varying	vector	temporary_15
 #!Init:
 	return            
 #!Code:
@@ -52,16 +63,40 @@ varying	vector	temporary_7
 	endif             
 	normalize	("v=v")  temporary_2  N 
 	faceforward	("v=vv")  Nf  temporary_2  I 
+	normalize	("v=v")  temporary_2  I 
+	negv              	V temporary_2
+	diffuse	("c=n")  temporary_2  Nf 
+	vufloat            temporary_6 0
+	comp	("f=cf")  temporary_0  temporary_2  temporary_6 
+	vufloat            temporary_6 20
+	mulff             	skin_matte temporary_0 temporary_6
+	vufloat            temporary_7 0
+	vufloat            temporary_10 1
+	dot               	temporary_12 V Nf
+	vufloat            temporary_13 0.6
+	divff             	temporary_11 temporary_12 temporary_13
+	subff             	temporary_9 temporary_10 temporary_11
+	vufloat            temporary_11 3
+	pow	("f=ff")  temporary_10  skin_matte  temporary_11 
+	mulff             	temporary_8 temporary_9 temporary_10
+	max	("f=ff")  temporary_6  temporary_7  temporary_8 
+	vufloat            temporary_7 0.6
+	mulff             	temporary_0 temporary_6 temporary_7
+	vfromf            	glancing_highlight temporary_0
 	vfromf            	temporary_3 Ka
 	vuvector           temporary_5 temporary_3
-	ambient	("c=")  temporary_6 
-	mulvv             	temporary_4 temporary_5 temporary_6
+	ambient	("c=")  temporary_14 
+	mulvv             	temporary_4 temporary_5 temporary_14
 	vfromf            	temporary_3 Kd
-	vuvector           temporary_6 temporary_3
-	diffuse	("c=n")  temporary_7  Nf 
-	mulvv             	temporary_5 temporary_6 temporary_7
+	vuvector           temporary_14 temporary_3
+	diffuse	("c=n")  temporary_15  Nf 
+	mulvv             	temporary_5 temporary_14 temporary_15
 	addvv             	temporary_2 temporary_4 temporary_5
 	mulvv             	Ci Ci temporary_2
+	vfromf            	temporary_3 .00005
+	vuvector           temporary_4 temporary_3
+	mulvv             	temporary_2 glancing_highlight temporary_4
+	addvv             	Ci Ci temporary_2
 	movevv            	Oi Os
 	mulvv             	Ci Ci Oi
 	vufloat            temporary_0 0
