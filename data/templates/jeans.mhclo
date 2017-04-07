@@ -3,6 +3,12 @@
 # homepage http://www.makehuman.org/
 # 
 # name Jeans
+# weightfile Rorkimaru data/templates/jeans.rig
+# subsurf 1
+# shrinkwrap 0.06
+# shapekey BendLegForward
+# shapekey BendLegBack
+# shapekey BendLegOut
 # material Jeans
 diffuse_color 0.0936 0.0652 0.8000
 diffuse_shader LAMBERT

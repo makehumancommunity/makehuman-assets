@@ -56,6 +56,8 @@
   light_source {MakeHuman_LightSource}
   object {
     MakeHuman_Mesh(0)
+    translate <MakeHuman_TranslateX, MakeHuman_TranslateY, MakeHuman_TranslateZ>
+    rotate <MakeHuman_RotateX, MakeHuman_RotateY, MakeHuman_RotateZ>
     texture {MakeHuman_Texture}
   } 
 #end
@@ -150,7 +152,6 @@
     MakeHuman_Mesh(-0.003)
     texture {
       pigment {
-        uv_mapping
         image_map {
           tga "texture.tga"
         }

@@ -3,6 +3,11 @@
 # homepage http://www.makehuman.org/
 # 
 # name Sweater
+# weightfile Rorkimaru data/templates/sweater.rig
+# subsurf 1
+# shapekey BendArmUp
+# shapekey BendArmDown
+# shapekey BreatheIn
 # material Sweater
 diffuse_color 0.0306 0.1626 0.0088
 diffuse_shader LAMBERT
