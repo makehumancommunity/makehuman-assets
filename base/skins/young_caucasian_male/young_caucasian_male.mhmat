@@ -25,7 +25,7 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-name young_caucasian_male
+name old_caucasian_male_detailed
 ambientColor 0.301960784314 0.278431372549 0.278431372549
 diffuseColor 1.0 1.0 1.0
 specularColor 0.0274509803922 0.0274509803922 0.0274509803922
@@ -33,20 +33,18 @@ shininess 0.5
 emissiveColor 0.196078431373 0.101960784314 0.101960784314
 opacity 1.0
 translucency 0.0
-
 shadeless False
 wireframe False
 transparent False
 alphaToCoverage True
 backfaceCull True
 depthless False
-
 castShadows True
-
 receiveShadows True
-
+tag young
+tag caucasian
+tag male
 diffuseTexture ../textures/young_lightskinned_male_diffuse.png
-
 sssEnabled True
 sssRScale 5.0
 sssGScale 2.5
@@ -54,7 +52,7 @@ sssBScale 1.0
 
 shader data/shaders/glsl/litsphere
 
-shaderParam litsphereTexture data/litspheres/lit_caucasian.png
+shaderParam litsphereTexture data/litspheres/lit_standard_skin.png
 
 shaderConfig ambientOcclusion True
 shaderConfig normal False

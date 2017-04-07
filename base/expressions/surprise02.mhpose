@@ -1,0 +1,21 @@
+{
+    "license": "AGPL3 (see also http://www.makehuman.org/doc/node/external_tools_license.html)", 
+    "name": "surprise02", 
+    "copyright": "(c) 2016 Data Collection AB, Joel Palmius, Jonas Hauquier", 
+    "tags": [
+        "surprise"
+    ], 
+    "author": "MakeHuman Team", 
+    "unit_poses": {
+        "MouthLeftPullUp": 0.698, 
+        "MouthRightPullUp": 0.432, 
+        "LeftUpperLidOpen": 0.352, 
+        "LeftInnerBrowUp": 0.412, 
+        "RightInnerBrowUp": 0.317, 
+        "LipsKiss": 0.347, 
+        "JawDropStretched": 0.633, 
+        "RightUpperLidOpen": 0.417
+    }, 
+    "homepage": "http://www.makehuman.org", 
+    "description": "No description set"
+}

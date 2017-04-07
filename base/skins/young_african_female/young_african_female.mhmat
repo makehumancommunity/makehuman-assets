@@ -33,17 +33,18 @@ shininess 0.5
 emissiveColor 0.196078431373 0.101960784314 0.101960784314
 opacity 1.0
 translucency 0.0
-
 shadeless False
 wireframe False
 transparent False
 alphaToCoverage True
 backfaceCull True
 depthless False
-
 castShadows True
-
 receiveShadows True
+
+tag young
+tag african
+tag female
 
 diffuseTexture ../textures/young_darkskinned_female_diffuse.png
 
@@ -54,7 +55,7 @@ sssBScale 1.0
 
 shader data/shaders/glsl/litsphere
 
-shaderParam litsphereTexture data/litspheres/lit_african.png
+shaderParam litsphereTexture data/litspheres/lit_standard_skin.png
 
 shaderConfig ambientOcclusion True
 shaderConfig normal False

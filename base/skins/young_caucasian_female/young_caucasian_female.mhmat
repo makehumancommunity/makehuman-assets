@@ -40,10 +40,12 @@ transparent False
 alphaToCoverage True
 backfaceCull True
 depthless False
-
 castShadows True
-
 receiveShadows True
+
+tag young
+tag caucasian
+tag female
 
 diffuseTexture ../textures/young_lightskinned_female_diffuse.png
 
@@ -54,7 +56,7 @@ sssBScale 1.0
 
 shader data/shaders/glsl/litsphere
 
-shaderParam litsphereTexture data/litspheres/lit_caucasian.png
+shaderParam litsphereTexture data/litspheres/lit_standard_skin.png
 
 shaderConfig ambientOcclusion True
 shaderConfig normal False

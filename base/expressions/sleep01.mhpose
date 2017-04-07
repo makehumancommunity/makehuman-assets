@@ -1,0 +1,16 @@
+{
+    "license": "AGPL3 (see also http://www.makehuman.org/doc/node/external_tools_license.html)", 
+    "name": "sleep", 
+    "copyright": "(c) 2016 Data Collection AB, Joel Palmius, Jonas Hauquier", 
+    "tags": [
+        "boredom"
+    ], 
+    "author": "MakeHuman Team", 
+    "unit_poses": {
+        "LeftUpperLidClosed": 1.0, 
+        "JawDrop": 0.065, 
+        "RightUpperLidClosed": 1.0
+    }, 
+    "homepage": "http://www.makehuman.org", 
+    "description": "No description set"
+}

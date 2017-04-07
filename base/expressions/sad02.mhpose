@@ -1,0 +1,18 @@
+{
+    "license": "AGPL3 (see also http://www.makehuman.org/doc/node/external_tools_license.html)", 
+    "name": "sad02", 
+    "copyright": "(c) 2016 Data Collection AB, Joel Palmius, Jonas Hauquier", 
+    "tags": [        
+        "sadness"
+    ], 
+    "author": "MakeHuman Team", 
+    "unit_poses": {
+        "RightInnerBrowUp": 0.578, 
+        "MouthLeftPullDown": 0.533, 
+        "LeftInnerBrowUp": 0.523, 
+        "MouthRightPullDown": 0.487, 
+        "lowerLipUp": 0.211
+    }, 
+    "homepage": "http://www.makehuman.org", 
+    "description": "No description set"
+}

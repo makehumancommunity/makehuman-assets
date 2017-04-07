@@ -26,6 +26,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 uuid 566dbd52-71d1-4d76-a799-0474a5a384db
 basemesh hm08
+tag Hats
 
 name fedora
 obj_file fedora.obj

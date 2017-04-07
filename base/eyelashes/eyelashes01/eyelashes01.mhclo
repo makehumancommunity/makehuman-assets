@@ -32,7 +32,7 @@ obj_file eyelashes01.obj
 x_scale 5399 11998 1.4800
 z_scale 962 5320 1.9221
 y_scale 791 881 2.3298
-z_depth 50
+z_depth 5
 material eyelashes01.mhmat
 verts 0
 14742

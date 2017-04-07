@@ -1,0 +1,20 @@
+{
+    "license": "AGPL3 (see also http://www.makehuman.org/doc/node/external_tools_license.html)", 
+    "name": "fear02", 
+    "copyright": "(c) 2016 Data Collection AB, Joel Palmius, Jonas Hauquier", 
+    "tags": [        
+        "fear"
+    ], 
+    "author": "MakeHuman Team", 
+    "unit_poses": {
+        "LeftUpperLidOpen": 1.0, 
+        "MouthRightPlatysma": 0.176, 
+        "RightOuterBrowUp": 0.729, 
+        "LeftOuterBrowUp": 0.462, 
+        "JawDropStretched": 0.99, 
+        "RightUpperLidOpen": 0.995, 
+        "ChinRight": 1.0
+    }, 
+    "homepage": "http://www.makehuman.org", 
+    "description": "No description set"
+}

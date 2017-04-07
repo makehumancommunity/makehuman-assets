@@ -1,0 +1,19 @@
+{
+    "license": "AGPL3 (see also http://www.makehuman.org/doc/node/external_tools_license.html)", 
+    "name": "boring01", 
+    "copyright": "(c) 2016 Data Collection AB, Joel Palmius, Jonas Hauquier", 
+    "tags": [        
+        "boredom"
+    ], 
+    "author": "MakeHuman Team", 
+    "unit_poses": {
+        "LeftUpperLidClosed": 0.101, 
+        "LeftInnerBrowUp": 0.327, 
+        "RightInnerBrowUp": 0.256, 
+        "LipsKiss": 0.241, 
+        "RightUpperLidClosed": 0.126, 
+        "CheeksPump": 1.0
+    }, 
+    "homepage": "http://www.makehuman.org", 
+    "description": "No description set"
+}

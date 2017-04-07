@@ -1,0 +1,18 @@
+{
+    "license": "AGPL3 (see also http://www.makehuman.org/doc/node/external_tools_license.html)", 
+    "name": "determination01", 
+    "copyright": "(c) 2016 Data Collection AB, Joel Palmius, Jonas Hauquier", 
+    "tags": [
+        "courage"
+    ], 
+    "author": "MakeHuman Team", 
+    "unit_poses": {
+        "NoseWrinkler": 0.126, 
+        "MouthRightPullUp": 0.347, 
+        "LeftBrowDown": 0.312, 
+        "RightBrowDown": 0.075, 
+        "MouthLeftPullSide": 0.382
+    }, 
+    "homepage": "http://www.makehuman.org", 
+    "description": "No description set"
+}

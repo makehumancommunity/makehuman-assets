@@ -1,0 +1,22 @@
+{
+    "license": "AGPL3 (see also http://www.makehuman.org/doc/node/external_tools_license.html)", 
+    "name": "smile05", 
+    "copyright": "(c) 2016 Data Collection AB, Joel Palmius, Jonas Hauquier", 
+    "tags": [
+        "delight"
+    ], 
+    "author": "MakeHuman Team", 
+    "unit_poses": {
+        "lowerLipDown": 0.177, 
+        "RightCheekUp": 0.749, 
+        "lowerLipBackward": 0.472, 
+        "NasolabialDeepener": 0.839, 
+        "UpperLipStretched": 0.658, 
+        "LeftCheekUp": 0.759, 
+        "RightLowerLidUp": 0.201, 
+        "LeftLowerLidUp": 0.256, 
+        "lowerLipUp": 0.01
+    }, 
+    "homepage": "http://www.makehuman.org", 
+    "description": "No description set"
+}

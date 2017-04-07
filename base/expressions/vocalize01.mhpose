@@ -1,0 +1,20 @@
+{
+    "license": "AGPL3 (see also http://www.makehuman.org/doc/node/external_tools_license.html)", 
+    "name": "vocalize", 
+    "copyright": "(c) 2016 Data Collection AB, Joel Palmius, Jonas Hauquier", 
+    "tags": [
+        "phonemes"        
+    ], 
+    "author": "MakeHuman Team", 
+    "unit_poses": {
+        "MouthMoveLeft": 0.126, 
+        "JawDrop": 0.146, 
+        "UpperLipUp": 0.869, 
+        "lowerLipForward": 0.437, 
+        "NasolabialDeepener": 0.653, 
+        "LipsKiss": 0.583, 
+        "UpperLipForward": 0.442
+    }, 
+    "homepage": "http://www.makehuman.org", 
+    "description": "No description set"
+}

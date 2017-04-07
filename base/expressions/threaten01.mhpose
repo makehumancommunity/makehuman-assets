@@ -1,0 +1,16 @@
+{
+    "license": "AGPL3 (see also http://www.makehuman.org/doc/node/external_tools_license.html)", 
+    "name": "threaten01", 
+    "copyright": "(c) 2016 Data Collection AB, Joel Palmius, Jonas Hauquier", 
+    "tags": [
+        "anger"
+    ], 
+    "author": "MakeHuman Team", 
+    "unit_poses": {
+        "NoseWrinkler": 0.126, 
+        "LeftBrowDown": 0.352, 
+        "RightBrowDown": 0.231
+    }, 
+    "homepage": "http://www.makehuman.org", 
+    "description": "No description set"
+}

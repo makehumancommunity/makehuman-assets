@@ -1,0 +1,23 @@
+{
+    "license": "AGPL3 (see also http://www.makehuman.org/doc/node/external_tools_license.html)", 
+    "name": "cry01", 
+    "copyright": "(c) 2016 Data Collection AB, Joel Palmius, Jonas Hauquier", 
+    "tags": [
+        "sadness"
+    ], 
+    "author": "MakeHuman Team", 
+    "unit_poses": {
+        "lowerLipDown": 0.206, 
+        "LeftInnerBrowUp": 0.578, 
+        "NasolabialDeepener": 0.608, 
+        "LeftUpperLidClosed": 0.382, 
+        "MouthRightPlatysma": 0.578, 
+        "RightInnerBrowUp": 0.643, 
+        "RightLowerLidUp": 0.593, 
+        "MouthLeftPlatysma": 0.528, 
+        "RightUpperLidClosed": 0.412, 
+        "LeftLowerLidUp": 0.688
+    }, 
+    "homepage": "http://www.makehuman.org", 
+    "description": "No description set"
+}

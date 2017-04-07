@@ -51,10 +51,12 @@ sssEnabled True
 sssRScale 5.0
 sssGScale 2.5
 sssBScale 1.0
-
 shader data/shaders/glsl/litsphere
+shaderParam litsphereTexture data/litspheres/lit_standard_skin.png
 
-shaderParam litsphereTexture data/litspheres/lit_african.png
+tag young
+tag african
+tag male
 
 shaderConfig ambientOcclusion True
 shaderConfig normal False
