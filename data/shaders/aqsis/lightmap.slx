@@ -111,7 +111,7 @@ segment Code
 	pushv Os
 	mulcc
 	pop Ci
-	pushif 5e-005
+	pushif 5e-05
 	setfc
 	pushv glancing_highlight
 	mulcc

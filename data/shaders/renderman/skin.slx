@@ -15,11 +15,11 @@ param uniform  float Ks
 param uniform  float roughness
 param uniform  color specularcolor
 param uniform  float desaturation
-param uniform  float dark
 varying  normal Nf
 varying  vector V
 varying  color Csss
 varying  color Cflat
+varying  color Cdiff
 varying  float spec
 varying  float mixVal
 varying  float angle_ramp
@@ -27,7 +27,9 @@ varying  float noise3D
 varying  float skin_matte
 varying  color glancing_highlight
 varying  float desaturate_factor
-varying  float desaturate_tone
+varying  color desaturate_tone
+varying  color x2
+varying  color x
 
 
 segment Init
@@ -50,8 +52,6 @@ segment Init
 	pop specularcolor
 	pushif 1
 	pop desaturation
-	pushif 4
-	pop dark
 
 
 segment Code
@@ -163,7 +163,6 @@ segment Code
 	normalize
 	negp
 	pop V
-	pushif 5
 	pushv Nf
 	pushv V
 	dotpp
@@ -172,7 +171,6 @@ segment Code
 	pushif 0
 	pushif 0
 	max
-	divff
 	pop angle_ramp
 	pushif 100
 	setfp
@@ -185,48 +183,87 @@ segment Code
 	diffuse
 	comp
 	pop skin_matte
-	pushif 0.6
-	pushif 3
 	pushv skin_matte
-	pow
-	pushif 0.6
-	pushv Nf
-	pushv V
-	dotpp
-	divff
-	pushif 1
-	subff
-	mulff
-	pushif 0
-	pushif 0
-	max
+	pushv angle_ramp
 	mulff
 	setfc
 	pop glancing_highlight
-	pushif 0.8
-	pushv Csss
+	pushv skin_matte
+	setfc
+	ambient
 	pushv Cflat
+	addcc
+	mulcc
+	pop Cdiff
+	pushif 0.85
+	pushv Csss
+	pushv Cdiff
 	cmix
 	pop Ci
+	pushif 1
+	pushif 0
+	pushv spec
+	setfc
+	pushv roughness
+	pushv V
+	pushv Nf
+	specular
 	pushv noise3D
-	pushif 3
+	mulfc
+	mulcc
+	comp
 	pushv skin_matte
-	pow
 	pushv desaturation
-	pushif 0.25
 	mulff
-	mulff
+	addff
+	pushif 0
+	min
+	pushif 0.5
 	mulff
 	pop desaturate_factor
 	pushif 0
 	pushv Ci
 	comp
+	pushif 0
+	pushv Ci
+	comp
+	pushif 0.6
+	pushif 0
+	pushv Ci
+	comp
+	mulff
+	settc
 	pop desaturate_tone
+	pushif 1
+	pushif 1
+	pushif 1
+	pushif 0.5
+	pushif 0
+	pushv Ci
+	comp
+	pushif 1
+	subff
+	mulff
+	addff
+	settc
+	pop x2
+	pushif 0
+	pushif 0
+	pushif 10
+	pushif 0.5
+	pushv angle_ramp
+	pushif 1
+	subff
+	pow
+	divff
+	settc
+	pop x
+	pushv x
 	pushv desaturate_factor
 	pushv desaturate_tone
-	setfc
 	pushv Ci
 	cmix
+	subcc
 	pop Ci
 	pushv spec
 	setfc
@@ -246,25 +283,20 @@ segment Code
 	pushv Ci
 	addcc
 	pop Ci
-	pushif 3
-	pushv skin_matte
-	pushif 1
-	subff
-	pow
-	pushif 1
-	subff
-	setfc
-	pushv Ci
-	mulcc
-	pushv glancing_highlight
-	addcc
-	pop Ci
-	pushv mixVal
+	pushv Cflat
+	pushv x2
 	pushv Cflat
 	pushv Ci
-	cmix
-	pop Ci
-	pushv Oi
-	pushv Ci
 	mulcc
+	mulcc
+	pushv Oi
+	mulcc
+	mulcc
+	pop Ci
+	pushif 2.5
+	setfc
+	pushv Ci
+	divcc
+	pushv Ci
+	addcc
 	pop Ci

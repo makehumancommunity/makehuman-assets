@@ -1,0 +1,147 @@
+#line 1 "skin.sl"
+
+ 
+
+
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+ 
+
+
+ 
+  
+  
+  
+  
+  
+
+color powC(color ColToPow; float Factor)
+ {
+ float R1 = comp(ColToPow, 0);
+ float G1 = comp(ColToPow, 1);
+ float B1 = comp(ColToPow, 2);
+
+ float R2 = pow(R1,Factor);
+ float G2 = pow(G1,Factor);
+ float B2 = pow(B1,Factor);
+
+ return color(R2, G2, B2);
+ }
+
+surface skin (
+ string ssstexture = "";
+ string texturename = "";
+ string opacitytexture = "";
+ string speculartexture = "";
+ string mixtexture = "";
+ float Ks = .5;
+ float roughness = .1;
+ color specularcolor = 1;
+ float desaturation = 1;
+ float dark = 4;
+ )
+{
+ normal Nf;
+ vector V;
+ color Csss;
+ color Cflat;
+ float spec;
+ float mixVal;
+
+ float Red = 1;
+ float Green = 1;
+ float Blue = 1;
+ float Red1 = 1;
+ float Green1 = 1;
+ float Blue1 = 1;
+ float Red2 = 1;
+ float Green2 = 1;
+ float Blue2 = 1;
+
+ if (texturename != "")
+ Cflat = color texture (texturename);
+ else Cflat = 1;
+
+ if (mixtexture != "")
+ mixVal = float texture (mixtexture);
+ else mixVal = 1;
+
+ if (speculartexture != "")
+ spec = float texture (speculartexture);
+ else spec = 1;
+
+ if (ssstexture != "")
+
+ Red1 = comp(color texture (ssstexture, "blur", scattering*Kr),0);
+ Green1 = comp(color texture (ssstexture, "blur", scattering*Kg),1);
+ Blue1 = comp(color texture (ssstexture, "blur", scattering*Kb),2);
+
+ Red2 = comp(color texture (ssstexture, "blur", scattering*Kr*5),0);
+ Green2 = comp(color texture (ssstexture, "blur", scattering*Kg*5),1);
+ Blue2 = comp(color texture (ssstexture, "blur", scattering*Kb*5),2);
+
+ Red = mix(Red1,Red2,0.5);
+ Green = mix(Green1,Green2,0.25);
+ Blue = mix(Blue1,Blue2,0.35);
+
+ setcomp(Csss,0,Red);
+ setcomp(Csss,1,Green);
+ setcomp(Csss,2,Blue);
+
+
+ else Csss = 1;
+
+ if (opacitytexture != "")
+ Oi = float texture (opacitytexture) * Os ;
+
+
+
+ Nf = faceforward (normalize(N),I);
+ V = -normalize(I);
+ float angle_ramp = (max(0,(1-( V.Nf))))/5;
+ float noise3D = float noise(P*100);
+ float skin_matte = comp(diffuse(Nf), 0);
+ color glancing_highlight = max(0,((1-(( V.Nf)/0.6))*pow(skin_matte,3)))*0.6;
+ Csss = Csss*Csss;
+
+
+ Ci = mix(Cflat,Csss,0.8);
+
+
+
+  
+ float desaturate_factor = 0.25*desaturation*pow(skin_matte, 3)*noise3D;
+ float desaturate_tone = comp(Ci, 0);
+ Ci = mix(Ci,desaturate_tone,desaturate_factor);
+
+
+ Ci = Ci+ specularcolor * Ks*noise3D*specular(Nf,V,roughness)*spec;
+#line 145
+ Ci = Ci*min((skin_matte*2),1);
+
+ Ci = mix(Ci,Cflat,mixVal);
+
+ Ci = Ci*Oi;
+#line 160
+}
