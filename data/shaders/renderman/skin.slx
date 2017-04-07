@@ -1,23 +1,16 @@
 surface
-AQSIS_V 1.4.2
+AQSIS_V 1.5.0
 
 
 segment Data
 
-USES 510215
+USES 510214
 
-varying  color screen::W
-varying  color screen::R
-varying  float powC::R1
-varying  float powC::G1
-varying  float powC::B1
-varying  float powC::R2
-varying  float powC::G2
-varying  float powC::B2
 param uniform  string ssstexture
 param uniform  string texturename
 param uniform  string opacitytexture
 param uniform  string speculartexture
+param uniform  string mixtexture
 param uniform  float Ks
 param uniform  float roughness
 param uniform  color specularcolor
@@ -25,19 +18,16 @@ param uniform  float desaturation
 param uniform  float dark
 varying  normal Nf
 varying  vector V
-varying  color Ct
-varying  color Cd
+varying  color Csss
+varying  color Cflat
 varying  float spec
+varying  float mixVal
 varying  float angle_ramp
 varying  float noise3D
 varying  float skin_matte
-varying  float dark_area
 varying  color glancing_highlight
-varying  float CiR2
-varying  float CiG2
-varying  float CiB2
-varying  float maxVal
 varying  float desaturate_factor
+varying  float desaturate_tone
 
 
 segment Init
@@ -49,6 +39,8 @@ segment Init
 	pop opacitytexture
 	pushis ""
 	pop speculartexture
+	pushis ""
+	pop mixtexture
 	pushif 0.5
 	pop Ks
 	pushif 0.1
@@ -75,34 +67,54 @@ segment Code
 	pushv texturename
 	pushif 0
 	ctexture1
-	pop Cd
+	pop Cflat
 :1
 	RS_INVERSE
 	RS_JZ 0
 	pushif 1
 	setfc
-	pop Cd
+	pop Cflat
 :0
 	RS_POP
 	S_CLEAR
 	pushis ""
-	pushv speculartexture
+	pushv mixtexture
 	ness
 	S_GET
 	RS_PUSH
 	RS_GET
 	RS_JZ 3
 	pushif 0
-	pushv speculartexture
+	pushv mixtexture
 	pushif 0
 	ftexture1
-	pop spec
+	pop mixVal
 :3
 	RS_INVERSE
 	RS_JZ 2
 	pushif 1
-	pop spec
+	pop mixVal
 :2
+	RS_POP
+	S_CLEAR
+	pushis ""
+	pushv speculartexture
+	ness
+	S_GET
+	RS_PUSH
+	RS_GET
+	RS_JZ 5
+	pushif 0
+	pushv speculartexture
+	pushif 0
+	ftexture1
+	pop spec
+:5
+	RS_INVERSE
+	RS_JZ 4
+	pushif 1
+	pop spec
+:4
 	RS_POP
 	S_CLEAR
 	pushis ""
@@ -111,19 +123,19 @@ segment Code
 	S_GET
 	RS_PUSH
 	RS_GET
-	RS_JZ 5
+	RS_JZ 7
 	pushif 0
 	pushv ssstexture
 	pushif 0
 	ctexture1
-	pop Ct
-:5
+	pop Csss
+:7
 	RS_INVERSE
-	RS_JZ 4
+	RS_JZ 6
 	pushif 1
 	setfc
-	pop Ct
-:4
+	pop Csss
+:6
 	RS_POP
 	S_CLEAR
 	pushis ""
@@ -132,7 +144,7 @@ segment Code
 	S_GET
 	RS_PUSH
 	RS_GET
-	RS_JZ 6
+	RS_JZ 8
 	pushv Os
 	pushif 0
 	pushv opacitytexture
@@ -140,7 +152,7 @@ segment Code
 	ftexture1
 	mulfc
 	pop Oi
-:6
+:8
 	RS_POP
 	pushv I
 	pushv N
@@ -168,21 +180,11 @@ segment Code
 	mulpp
 	noise3
 	pop noise3D
-	pushif 20
 	pushif 0
 	pushv Nf
 	diffuse
 	comp
-	mulff
 	pop skin_matte
-	pushif 3
-	pushv skin_matte
-	pushif 1
-	subff
-	pow
-	pushif 0.5
-	mulff
-	pop dark_area
 	pushif 0.6
 	pushif 3
 	pushv skin_matte
@@ -201,140 +203,30 @@ segment Code
 	mulff
 	setfc
 	pop glancing_highlight
-	pushv noise3D
-	pushv angle_ramp
-	mulff
-	setfc
-	pushv Ct
-	pushv Cs
-	mulcc
-	subcc
+	pushif 0.8
+	pushv Csss
+	pushv Cflat
+	cmix
 	pop Ci
-	pushif 1
-	pushif 1
-	pushif 1
-	settc
-	pop screen::W
-	pushv Cd
-	pushv screen::W
-	subcc
-	pushv Ci
-	pushv screen::W
-	subcc
-	mulcc
-	pushv screen::W
-	subcc
-	pop screen::R
-	pushv screen::R
-	pop Ci
-	pushv dark
-	pushif 2
-	divff
-	setfc
-	pushif 0
-	pushv Ci
-	comp
-	pop powC::R1
-	pushif 1
-	pushv Ci
-	comp
-	pop powC::G1
-	pushif 2
-	pushv Ci
-	comp
-	pop powC::B1
-	pushv dark
-	pushv powC::R1
-	pow
-	pop powC::R2
-	pushv dark
-	pushv powC::G1
-	pow
-	pop powC::G2
-	pushv dark
-	pushv powC::B1
-	pow
-	pop powC::B2
-	pushv powC::B2
-	pushv powC::G2
-	pushv powC::R2
-	settc
-	mulcc
-	pop Ci
-	pushif 0
-	pushv Ci
-	comp
-	pop CiR2
-	pushif 1
-	pushv Ci
-	comp
-	pop CiG2
-	pushif 2
-	pushv Ci
-	comp
-	pop CiB2
-	pushv CiB2
-	pushv CiG2
-	pushv CiR2
-	pushif 1
-	max
-	pop maxVal
 	pushv noise3D
 	pushif 3
 	pushv skin_matte
 	pow
 	pushv desaturation
+	pushif 0.25
+	mulff
 	mulff
 	mulff
 	pop desaturate_factor
-	pushv CiR2
-	pushv CiR2
-	pushv maxVal
-	subff
-	pushv desaturate_factor
-	mulff
-	addff
-	pop CiR2
-	pushv CiG2
-	pushv CiG2
-	pushv maxVal
-	subff
-	pushv desaturate_factor
-	mulff
-	addff
-	pop CiG2
-	pushv CiB2
-	pushv CiB2
-	pushv maxVal
-	subff
-	pushv desaturate_factor
-	mulff
-	addff
-	pop CiB2
-	pushv CiR2
 	pushif 0
 	pushv Ci
-	setcomp
-	pushv CiG2
-	pushif 1
+	comp
+	pop desaturate_tone
+	pushv desaturate_factor
+	pushv desaturate_tone
+	setfc
 	pushv Ci
-	setcomp
-	pushv CiB2
-	pushif 2
-	pushv Ci
-	setcomp
-	pushif 0.15
-	pushv dark_area
-	mulff
-	pushif 0.2
-	pushv dark_area
-	mulff
-	pushif 0.1
-	pushv dark_area
-	mulff
-	settc
-	pushv Ci
-	subcc
+	cmix
 	pop Ci
 	pushv spec
 	setfc
@@ -351,10 +243,26 @@ segment Code
 	mulcc
 	mulcc
 	mulcc
-	ambient
+	pushv Ci
+	addcc
+	pop Ci
+	pushif 3
+	pushv skin_matte
+	pushif 1
+	subff
+	pow
+	pushif 1
+	subff
+	setfc
 	pushv Ci
 	mulcc
+	pushv glancing_highlight
 	addcc
+	pop Ci
+	pushv mixVal
+	pushv Cflat
+	pushv Ci
+	cmix
 	pop Ci
 	pushv Oi
 	pushv Ci

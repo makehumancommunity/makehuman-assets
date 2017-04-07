@@ -1,0 +1,114 @@
+surface
+AQSIS_V 1.5.0
+
+
+segment Data
+
+USES 473610
+
+param uniform  float Ka
+param uniform  float Kd
+param uniform  float Ks
+param uniform  float roughness
+param uniform  color rootcolor
+param uniform  color tipcolor
+param uniform  color specularcolor
+varying  normal FakeN
+
+
+segment Init
+	pushif 1
+	pop Ka
+	pushif 0.6
+	pop Kd
+	pushif 0.9
+	pop Ks
+	pushif 0.15
+	pop roughness
+	pushif 0.007
+	pushif 0.037
+	pushif 0.109
+	settc
+	pop rootcolor
+	pushif 0.125
+	pushif 0.325
+	pushif 0.519
+	settc
+	pop tipcolor
+	pushif 2
+	setfc
+	pushv tipcolor
+	pushif 1
+	setfc
+	addcc
+	divcc
+	pop specularcolor
+
+
+segment Code
+	S_CLEAR
+	pushif 0.5
+	pushv u
+	gtff
+	S_GET
+	RS_PUSH
+	RS_GET
+	RS_JZ 1
+	pushv du
+	setfp
+	pushv dPdu
+	mulpp
+	pushv N
+	addpp
+	normalize
+	pop FakeN
+:1
+	RS_INVERSE
+	RS_JZ 0
+	pushv du
+	setfp
+	pushv dPdu
+	mulpp
+	pushv N
+	subpp
+	normalize
+	pop FakeN
+:0
+	RS_POP
+	pushif 5
+	pushv v
+	pow
+	pushif 1
+	subff
+	setfc
+	pop Oi
+	pushv roughness
+	pushv I
+	normalize
+	negp
+	pushv FakeN
+	specular
+	pushv Ks
+	setfc
+	pushv specularcolor
+	mulcc
+	mulcc
+	pushv FakeN
+	diffuse
+	pushv v
+	pushv tipcolor
+	pushv rootcolor
+	cmix
+	mulcc
+	ambient
+	pushv Ka
+	mulfc
+	addcc
+	addcc
+	pushv Os
+	mulcc
+	pop Ci
+	pushv Oi
+	pushv Ci
+	mulcc
+	pop Ci

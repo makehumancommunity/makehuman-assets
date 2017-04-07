@@ -1,12 +1,39 @@
 
 //(c) MakeHuman team 2007 - www.makehuman.org
 
-color screen(color F; color B)
-    {
-       color W = (1,1,1);
-	   color R = W - (W - F)*(W - B);
-	   return R;
-    }
+
+//color
+//wrappeddiffuse( normal N; float wrappedangle )
+//{
+	//color C = 0;
+	//normal Nn;
+    //vector Ln;
+    //extern point P;
+	//Nn = normalize(N);
+	//illuminance( P, Nn, PI/2 ) {
+		//Ln = normalize(L);
+		//C += Cl * (1 - acos(Ln.Nn) / wrappedangle); 	}
+	//return C;
+//}
+
+//color
+//test( normal N )
+//{
+	//color C = 0;
+    //extern point P;
+    //normal Nn = normalize(N);
+	//illuminance( P, Nn, PI) {		
+		//C += Cl; 	}
+	//return C;
+//}
+
+
+//color screen(color F; color B)
+    //{
+       //color W = (1,1,1);
+	   //color R = W - (W - F)*(W - B);
+	   //return R;
+    //}
 
 color powC(color ColToPow; float Factor)
     {
@@ -26,6 +53,7 @@ surface skin (
 			string texturename = "";
 			string opacitytexture = "";
             string speculartexture = "";
+            string mixtexture = "";
 			float Ks = .5;
 			float roughness = .1;
 			color specularcolor = 1;
@@ -35,21 +63,26 @@ surface skin (
 {	
     normal Nf;
     vector V;
-    color Ct;
-	color Cd;
+    color Csss;
+	color Cflat;
     float spec;
+    float mixVal;
 	
     if (texturename != "")
-        Cd = color texture (texturename);
-    else Cd = 1;
+        Cflat = color texture (texturename);
+    else Cflat = 1;
+    
+    if (mixtexture != "")
+        mixVal = float texture (mixtexture);       
+	else mixVal = 1;
     
     if (speculartexture != "")
-        spec = float texture (speculartexture);    
+        spec = float texture (speculartexture);       
 	else spec = 1;
     
 	if (ssstexture != "")	
-        Ct = color texture (ssstexture);		
-    else Ct = 1;
+        Csss = color texture (ssstexture);		
+    else Csss = 1;
 	
     if (opacitytexture != "")	
         Oi = float texture (opacitytexture) * Os ;	
@@ -60,44 +93,45 @@ surface skin (
     V = -normalize(I);
 	float angle_ramp = (max(0,(1-( V.Nf))))/5;
 	float  noise3D = float noise(P*100);
-	float skin_matte = comp(diffuse(Nf), 0)*20;
-	float dark_area = 0.5*pow((1-skin_matte),3);
-
-    color glancing_highlight = max(0,((1-(( V.Nf)/0.6))*pow(skin_matte,3)))*0.6;
-    
-    
-    
-	Ci = (Cs * Ct) - angle_ramp*noise3D;	
-	//Ci = mix(Ci,Cd,0.5);
-    Ci = screen(Ci,Cd);
-    //Ci = (Ci*Ci)*(2/dark);
-    Ci = powC(Ci,dark)*(2/dark);
+	float skin_matte = comp(diffuse(Nf), 0);	
+    color glancing_highlight = max(0,((1-(( V.Nf)/0.6))*pow(skin_matte,3)))*0.6;    
+    //Csss = Csss*Csss;
     
 
+    Ci = mix(Cflat,Csss,0.8);
+
+        
+    
 	//DESATURATE THE HIGHTLIGHTS
-	
-	float CiR2 = comp(Ci, 0);
-	float CiG2 = comp(Ci, 1);
-	float CiB2 = comp(Ci, 2);
-	
-	float maxVal = max(CiR2,CiG2,CiB2);
-    float desaturate_factor = desaturation*pow(skin_matte, 3)*noise3D;
-	
-	CiR2 = (desaturate_factor*(maxVal - CiR2)) + CiR2;
-	CiG2 = (desaturate_factor*(maxVal - CiG2)) + CiG2;
-	CiB2 = (desaturate_factor*(maxVal - CiB2)) + CiB2;	
-	
-	setcomp (Ci, 0, CiR2);
-	setcomp (Ci, 1, CiG2);
-	setcomp (Ci, 2, CiB2);
-	
-	
-	Ci = Ci - (color(dark_area*.1,dark_area*.2,dark_area*.15));
-    Ci = (Ci * ambient())+ specularcolor * Ks*noise3D*specular(Nf,V,roughness)*spec;
-       
-	Ci = Ci*Oi;
+	float desaturate_factor = 0.25*desaturation*pow(skin_matte, 3)*noise3D;
+    float desaturate_tone = comp(Ci, 0);
+    Ci = mix(Ci,desaturate_tone,desaturate_factor); 
+    	
+	     
+    
+    
+    
     
 	
+    
+    
+    
+    
+    
+   
+    Ci = Ci+ specularcolor * Ks*noise3D*specular(Nf,V,roughness)*spec;
+    //Ci = Ci* 2*skin_matte - pow(skin_matte,2);
+    //Ci = skin_matte;
+    Ci = glancing_highlight+(Ci*(1-pow((1-skin_matte),3)));
+    Ci = mix(Ci,Cflat,mixVal);
+    Ci = Ci*Oi;
+    
+    //Ci = min(2*skin_matte - pow(skin_matte,2),1);
+    
+    
+    //Ci = Cflat;
+    
+
     
 	
 	

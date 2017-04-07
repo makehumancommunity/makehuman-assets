@@ -1,10 +1,11 @@
-#!version 2.2.5
+#!version 2.2.6
 surface
 #!parameters:
 uniform	string	ssstexture	=	""
 uniform	string	texturename	=	""
 uniform	string	opacitytexture	=	""
 uniform	string	speculartexture	=	""
+uniform	string	mixtexture	=	""
 uniform	float	Ks	=	.5
 uniform	float	roughness	=	.1
 uniform	color	specularcolor	=	1
@@ -13,19 +14,16 @@ uniform	float	dark	=	4
 #!variables:
 varying	vector	Nf
 varying	vector	V
-varying	vector	Ct
-varying	vector	Cd
+varying	vector	Csss
+varying	vector	Cflat
 varying	float	spec
+varying	float	mixVal
 varying	float	angle_ramp
 varying	float	noise3D
 varying	float	skin_matte
-varying	float	dark_area
 varying	vector	glancing_highlight
-varying	float	CiR2
-varying	float	CiG2
-varying	float	CiB2
-varying	float	maxVal
 varying	float	desaturate_factor
+varying	float	desaturate_tone
 varying	float	temporary_0
 uniform	float	temporary_1
 uniform	vector	temporary_2
@@ -39,58 +37,58 @@ varying	float	temporary_9
 varying	float	temporary_10
 varying	float	temporary_11
 varying	float	temporary_12
-varying	vector	W
-varying	vector	R
 varying	vector	temporary_13
-varying	float	R1
-varying	float	G1
-varying	float	B1
-varying	float	R2
-varying	float	G2
-varying	float	B2
 varying	vector	temporary_14
-varying	vector	temporary_15
-uniform	vector	temporary_16
-varying	vector	temporary_17
+uniform	vector	temporary_15
+varying	vector	temporary_16
 #!Init:
 	return            
 #!Code:
 	sneql             	temporary_1 texturename ""
 	vufloat            temporary_0 temporary_1
-	if                	temporary_0 #!Label10
-	texture	("c=SFff")  Cd  texturename  0  s  t 
-#!Label10:
-	else              	#!Label9
+	if                	temporary_0 #!Label12
+	texture	("c=SFff")  Cflat  texturename  0  s  t 
+#!Label12:
+	else              	#!Label11
 	vfromf            	temporary_2 1
-	vuvector           Cd temporary_2
-#!Label9:
+	vuvector           Cflat temporary_2
+#!Label11:
+	endif             
+	sneql             	temporary_1 mixtexture ""
+	vufloat            temporary_0 temporary_1
+	if                	temporary_0 #!Label14
+	texture	("f=SFff")  mixVal  mixtexture  0  s  t 
+#!Label14:
+	else              	#!Label13
+	vufloat            mixVal 1
+#!Label13:
 	endif             
 	sneql             	temporary_1 speculartexture ""
 	vufloat            temporary_0 temporary_1
-	if                	temporary_0 #!Label12
+	if                	temporary_0 #!Label16
 	texture	("f=SFff")  spec  speculartexture  0  s  t 
-#!Label12:
-	else              	#!Label11
+#!Label16:
+	else              	#!Label15
 	vufloat            spec 1
-#!Label11:
+#!Label15:
 	endif             
 	sneql             	temporary_1 ssstexture ""
 	vufloat            temporary_0 temporary_1
-	if                	temporary_0 #!Label14
-	texture	("c=SFff")  Ct  ssstexture  0  s  t 
-#!Label14:
-	else              	#!Label13
+	if                	temporary_0 #!Label18
+	texture	("c=SFff")  Csss  ssstexture  0  s  t 
+#!Label18:
+	else              	#!Label17
 	vfromf            	temporary_2 1
-	vuvector           Ct temporary_2
-#!Label13:
+	vuvector           Csss temporary_2
+#!Label17:
 	endif             
 	sneql             	temporary_1 opacitytexture ""
 	vufloat            temporary_0 temporary_1
-	if                	temporary_0 #!Label15
+	if                	temporary_0 #!Label19
 	texture	("f=SFff")  temporary_4  opacitytexture  0  s  t 
 	vfromf            	temporary_3 temporary_4
 	mulvv             	Oi temporary_3 Os
-#!Label15:
+#!Label19:
 	endif             
 	normalize	("v=v")  temporary_3  N 
 	faceforward	("v=vv")  Nf  temporary_3  I 
@@ -108,16 +106,8 @@ varying	vector	temporary_17
 	mulvv             	temporary_3 P temporary_8
 	noise	("f=p")  noise3D  temporary_3 
 	diffuse	("c=n")  temporary_3  Nf 
-	vufloat            temporary_4 0
-	comp	("f=cf")  temporary_0  temporary_3  temporary_4 
-	vufloat            temporary_4 20
-	mulff             	skin_matte temporary_0 temporary_4
-	vufloat            temporary_0 0.5
-	vufloat            temporary_6 1
-	subff             	temporary_5 temporary_6 skin_matte
-	vufloat            temporary_6 3
-	pow	("f=ff")  temporary_4  temporary_5  temporary_6 
-	mulff             	dark_area temporary_0 temporary_4
+	vufloat            temporary_0 0
+	comp	("f=cf")  skin_matte  temporary_3  temporary_0 
 	vufloat            temporary_5 0
 	vufloat            temporary_9 1
 	dot               	temporary_11 V Nf
@@ -131,79 +121,38 @@ varying	vector	temporary_17
 	vufloat            temporary_5 0.6
 	mulff             	temporary_0 temporary_4 temporary_5
 	vfromf            	glancing_highlight temporary_0
-	mulvv             	temporary_3 Cs Ct
-	mulff             	temporary_0 angle_ramp noise3D
-	vfromf            	temporary_8 temporary_0
-	subvv             	Ci temporary_3 temporary_8
-	vfromf            	temporary_2 1 1 1
-	vuvector           W temporary_2
-	subvv             	temporary_8 W Ci
-	subvv             	temporary_13 W Cd
-	mulvv             	temporary_3 temporary_8 temporary_13
-	subvv             	R W temporary_3
-	movevv            	Ci R
-	vufloat            temporary_0 dark
-	vufloat            temporary_4 0
-	comp	("f=cf")  R1  Ci  temporary_4 
-	vufloat            temporary_4 1
-	comp	("f=cf")  G1  Ci  temporary_4 
-	vufloat            temporary_4 2
-	comp	("f=cf")  B1  Ci  temporary_4 
-	pow	("f=ff")  R2  R1  temporary_0 
-	pow	("f=ff")  G2  G1  temporary_0 
-	pow	("f=ff")  B2  B1  temporary_0 
-	vfromf            	temporary_3 R2 G2 B2
-	divff             	temporary_1 2 dark
-	vfromf            	temporary_2 temporary_1
-	vuvector           temporary_8 temporary_2
-	mulvv             	Ci temporary_3 temporary_8
-	vufloat            temporary_0 0
-	comp	("f=cf")  CiR2  Ci  temporary_0 
-	vufloat            temporary_0 1
-	comp	("f=cf")  CiG2  Ci  temporary_0 
-	vufloat            temporary_0 2
-	comp	("f=cf")  CiB2  Ci  temporary_0 
-	max	("f=fff")  maxVal  CiR2  CiG2  CiB2 
-	vufloat            temporary_4 desaturation
+	vufloat            temporary_0 0.8
+	mix	("v=vvf")  Ci  Cflat  Csss  temporary_0 
+	mulff             	temporary_1 0.25 desaturation
+	vufloat            temporary_4 temporary_1
 	vufloat            temporary_6 3
 	pow	("f=ff")  temporary_5  skin_matte  temporary_6 
 	mulff             	temporary_0 temporary_4 temporary_5
 	mulff             	desaturate_factor temporary_0 noise3D
-	subff             	temporary_4 maxVal CiR2
-	mulff             	temporary_0 desaturate_factor temporary_4
-	addff             	CiR2 temporary_0 CiR2
-	subff             	temporary_4 maxVal CiG2
-	mulff             	temporary_0 desaturate_factor temporary_4
-	addff             	CiG2 temporary_0 CiG2
-	subff             	temporary_4 maxVal CiB2
-	mulff             	temporary_0 desaturate_factor temporary_4
-	addff             	CiB2 temporary_0 CiB2
 	vufloat            temporary_0 0
-	setcomp	("o=Cff")  Ci  temporary_0  CiR2 
-	vufloat            temporary_0 1
-	setcomp	("o=Cff")  Ci  temporary_0  CiG2 
-	vufloat            temporary_0 2
-	setcomp	("o=Cff")  Ci  temporary_0  CiB2 
-	vufloat            temporary_4 .1
-	mulff             	temporary_0 dark_area temporary_4
-	vufloat            temporary_5 .2
-	mulff             	temporary_4 dark_area temporary_5
-	vufloat            temporary_6 .15
-	mulff             	temporary_5 dark_area temporary_6
-	vfromf            	temporary_3 temporary_0 temporary_4 temporary_5
-	subvv             	Ci Ci temporary_3
-	ambient	("c=")  temporary_8 
-	mulvv             	temporary_3 Ci temporary_8
-	vfromf            	temporary_16 Ks
-	mulvv             	temporary_2 specularcolor temporary_16
-	vuvector           temporary_15 temporary_2
-	vfromf            	temporary_17 noise3D
-	mulvv             	temporary_14 temporary_15 temporary_17
+	comp	("f=cf")  desaturate_tone  Ci  temporary_0 
+	vfromf            	temporary_3 desaturate_tone
+	mix	("v=vvf")  Ci  Ci  temporary_3  desaturate_factor 
+	vfromf            	temporary_15 Ks
+	mulvv             	temporary_2 specularcolor temporary_15
+	vuvector           temporary_14 temporary_2
+	vfromf            	temporary_16 noise3D
+	mulvv             	temporary_13 temporary_14 temporary_16
 	vufloat            temporary_0 roughness
-	specular	("c=nvf")  temporary_15  Nf  V  temporary_0 
-	mulvv             	temporary_13 temporary_14 temporary_15
-	vfromf            	temporary_14 spec
+	specular	("c=nvf")  temporary_14  Nf  V  temporary_0 
 	mulvv             	temporary_8 temporary_13 temporary_14
-	addvv             	Ci temporary_3 temporary_8
+	vfromf            	temporary_13 spec
+	mulvv             	temporary_3 temporary_8 temporary_13
+	addvv             	Ci Ci temporary_3
+	vufloat            temporary_4 1
+	vufloat            temporary_7 1
+	subff             	temporary_6 temporary_7 skin_matte
+	vufloat            temporary_7 3
+	pow	("f=ff")  temporary_5  temporary_6  temporary_7 
+	subff             	temporary_0 temporary_4 temporary_5
+	vfromf            	temporary_8 temporary_0
+	mulvv             	temporary_3 Ci temporary_8
+	addvv             	Ci glancing_highlight temporary_3
+	mix	("v=vvf")  Ci  Ci  Cflat  mixVal 
 	mulvv             	Ci Ci Oi
 	return            

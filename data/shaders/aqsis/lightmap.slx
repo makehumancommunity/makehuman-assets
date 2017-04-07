@@ -1,5 +1,5 @@
 surface
-AQSIS_V 1.4.2
+AQSIS_V 1.5.0
 
 
 segment Data
@@ -23,7 +23,7 @@ varying  color glancing_highlight
 segment Init
 	pushif 1
 	pop Ka
-	pushif 0.5
+	pushif 1
 	pop Kd
 	pushif 0.1
 	pop roughness

@@ -1,0 +1,74 @@
+#!version 2.2.6
+surface
+#!parameters:
+uniform	float	Ka	=	1
+uniform	float	Kd	=	.6
+uniform	float	Ks	=	.9
+uniform	float	roughness	=	.15
+uniform	color	rootcolor	=	 [ .109 .037 .007 ]
+uniform	color	tipcolor	=	 [ .519 .325 .125 ]
+uniform	color	specularcolor
+#!variables:
+uniform	vector	temporary_0
+uniform	vector	temporary_1
+varying	vector	FakeN
+varying	float	temporary_2
+varying	float	temporary_3
+varying	vector	temporary_4
+varying	vector	temporary_5
+varying	vector	temporary_6
+varying	float	temporary_7
+varying	float	temporary_8
+varying	vector	temporary_9
+varying	vector	temporary_10
+varying	vector	temporary_11
+varying	vector	temporary_12
+#!Init:
+	vfromf            	temporary_1 1
+	addvv             	temporary_0 temporary_1 tipcolor
+	vfromf            	temporary_1 2
+	divvv             	specularcolor temporary_0 temporary_1
+	return            
+#!Code:
+	vufloat            temporary_3 0.5
+	fgt               	temporary_2 u temporary_3
+	if                	temporary_2 #!Label4
+	vfromf            	temporary_6 du
+	mulvv             	temporary_5 dPdu temporary_6
+	addvv             	temporary_4 N temporary_5
+	normalize	("v=v")  FakeN  temporary_4 
+#!Label4:
+	else              	#!Label3
+	vfromf            	temporary_6 du
+	mulvv             	temporary_5 dPdu temporary_6
+	subvv             	temporary_4 N temporary_5
+	normalize	("v=v")  FakeN  temporary_4 
+#!Label3:
+	endif             
+	vufloat            temporary_3 1
+	vufloat            temporary_8 5
+	pow	("f=ff")  temporary_7  v  temporary_8 
+	subff             	temporary_2 temporary_3 temporary_7
+	vfromf            	Oi temporary_2
+	vfromf            	temporary_0 Ka
+	vuvector           temporary_9 temporary_0
+	ambient	("c=")  temporary_10 
+	mulvv             	temporary_6 temporary_9 temporary_10
+	vuvector           temporary_11 rootcolor
+	vuvector           temporary_12 tipcolor
+	mix	("v=vvf")  temporary_10  temporary_11  temporary_12  v 
+	diffuse	("c=n")  temporary_11  FakeN 
+	mulvv             	temporary_9 temporary_10 temporary_11
+	addvv             	temporary_5 temporary_6 temporary_9
+	vfromf            	temporary_1 Ks
+	mulvv             	temporary_0 specularcolor temporary_1
+	vuvector           temporary_9 temporary_0
+	normalize	("v=v")  temporary_12  I 
+	negv              	temporary_11 temporary_12
+	vufloat            temporary_2 roughness
+	specular	("c=nvf")  temporary_10  FakeN  temporary_11  temporary_2 
+	mulvv             	temporary_6 temporary_9 temporary_10
+	addvv             	temporary_4 temporary_5 temporary_6
+	mulvv             	Ci Os temporary_4
+	mulvv             	Ci Ci Oi
+	return            
