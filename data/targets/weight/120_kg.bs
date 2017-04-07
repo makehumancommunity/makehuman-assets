@@ -1,0 +1,13 @@
+targets/torso/torso_fat.target,1.000000
+targets/neck/neck_fat.target,0.880000
+targets/r_upper_leg/r_upper_leg_fat.target,0.920000
+targets/l_upper_leg/l_upper_leg_fat.target,0.980000
+targets/r_upper_arm/r_upper_arm_fat.target,0.880000
+targets/r_lower_arm/r_lower_arm_fat.target,1.000000
+targets/l_upper_arm/l_upper_arm_fat.target,0.920000
+targets/l_lower_arm/l_lower_arm_fat.target,1.000000
+targets/l_lower_leg/l_lower_leg_fat.target,1.000000
+targets/r_lower_leg/r_lower_leg_fat.target,1.000000
+targets/chin_jaw/chin_second.target,1.000000
+targets/r_cheek/r_cheek_round.target,1.000000
+targets/l_cheek/l_cheek_round.target,1.000000
