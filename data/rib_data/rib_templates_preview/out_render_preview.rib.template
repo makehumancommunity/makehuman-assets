@@ -1,0 +1,27 @@
+Projection "perspective" "fov" [10.0]
+Format 800 600 1
+PixelSamples 2 2
+Sides 1
+Declare "intensity" "float" 
+Display "preview.tif" "framebuffer" "rgb"
+Display "+${MESH_PATH}preview.tif" "file" "rgba"
+		Rotate 90.0 1 0 0
+		Rotate 180.0 0 1 0
+		Rotate 0.0 0 0 1
+        Translate ${TRANSLATE_X} ${TRANSLATE_Y} ${TRANSLATE_Z}		
+        
+WorldBegin
+	LightSource "pointlight" 1 "from" [-30 1 15]  "intensity" [80]
+	LightSource "pointlight" 2 "from" [0 -15 10]  "intensity" [80]
+	LightSource "ambientlight" 3 "intensity" 0.3
+	AttributeBegin
+		Color [1.0 1.0 1.0]	
+		Translate 0.0 0.0 0.0
+        Rotate ${ROTATE_X} 1 0 0
+		Rotate ${ROTATE_Y} 0 1 0		
+		Scale 1.0 1.0 1.0		
+		Surface "matte"
+		ReadArchive "${MESH_PATH}Basehead.rib" 
+		ReadArchive "${MESH_PATH}Basebody.rib"               
+	AttributeEnd
+WorldEnd

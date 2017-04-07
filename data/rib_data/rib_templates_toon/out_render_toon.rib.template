@@ -1,0 +1,86 @@
+#Generated with MakeHuman 0.9
+#www.makehuman.org (c) 2001-2006
+
+
+FrameBegin 1
+Option "statistics" "endofframe" [1]
+Option "searchpath" "shader" ["${SHADERS_PATH}:&"] 
+Option "searchpath" "texture" ["${TEXTURES_PATH}:&"]
+Attribute "displacementbound" "sphere" [0.3]
+Projection "perspective" "fov" [28]
+Format 800 600 1
+Clipping 0.10000000149 100.0
+PixelSamples 4 4
+Sides 2
+
+Declare "width" "float"  
+
+Display "${MESH_PATH}00001.tif" "framebuffer" "rgb"
+Display "+${MESH_PATH}toon.tif" "file" "rgba"
+		Rotate 90.0 1 0 0
+		Rotate 180.0 0 1 0
+		Rotate 0.0 0 0 1		
+        Translate ${TRANSLATE_X} ${TRANSLATE_Y} ${TRANSLATE_Z}
+
+WorldBegin
+
+LightSource "pointlight" 2  "intensity" 10  "from" [10 -5 6] 
+LightSource "pointlight" 3  "intensity" 8  "from" [-10 0 0] 
+
+#LightSource "pointlight" 4  "intensity" 10  "from" [0 -10 10 ] 
+#LightSource "pointlight" 5  "intensity" 10  "from" [0 -10 -10 ] 
+LightSource "ambientlight" 106 "intensity" .4
+
+	
+	AttributeBegin
+		Color [1 1 1]	
+		#Translate ${TRANSLATE_X} ${TRANSLATE_Y} ${TRANSLATE_Z}
+        Translate 0.0 5 0.0
+		Rotate 0 0 0 1
+		Rotate 0 0 1 0
+		Rotate 90 1 0 0
+		Scale 1.0 1.0 1.0
+						
+		Surface "IDcs"	
+		SubdivisionMesh "catmull-clark" [4 ]
+[0 3 2 1 ]
+["interpolateboundary"] [0 0] [] []
+"P" [68.39503479 68.3950500488 -2.82262021756e-006 68.39503479 -68.39503479 2.82261839857e-006 -68.3950500488 -68.3950195313 2.82261817119e-006 -68.3950195313 68.3950805664 -2.82262112705e-006 ]
+	AttributeEnd
+	
+	
+	AttributeBegin
+		Color [1 1 1]	
+		#Translate ${TRANSLATE_X} ${TRANSLATE_Y} ${TRANSLATE_Z}
+        Translate 0.0 0.0 0.0
+		Rotate ${ROTATE_Z} 0 0 1
+		Rotate 0.0 0 1 0
+		Rotate ${ROTATE_X} 1 0 0
+		Scale 1.0 1.0 1.0
+						
+		Surface "IDfill"	
+		ReadArchive "${MESH_PATH}Base.rib"	
+		
+		
+	AttributeEnd
+	
+	
+		AttributeBegin
+		Color [0.509746 0.549 0.156465]
+		#Translate ${TRANSLATE_X} ${TRANSLATE_Y} ${TRANSLATE_Z}
+        Translate 0.0 0.0 0.0
+		Rotate ${ROTATE_Z} 0 0 1
+		Rotate 0.0 0 1 0
+		Rotate ${ROTATE_X} 1 0 0
+		Scale 1.0 1.0 1.0		
+				
+		Attribute "displacementbound" "coordinatesystem" ["shader"] "sphere" [0.05]
+		Surface "IDoutline"	"width" [0.05]	
+		ReadArchive "${MESH_PATH}Base.rib"
+		AttributeEnd		
+		
+	AttributeEnd
+	
+	
+WorldEnd
+FrameEnd

@@ -1,0 +1,343 @@
+#Generated with MakeHuman 0.9.1
+#www.makehuman.org (c) 2001-2007
+
+
+#--------------------------------------------------------------------------------
+#STEP 1: Generate a simple color map, very important to underline the skin details
+#--------------------------------------------------------------------------------
+FrameBegin 1
+Option "searchpath" "shader" ["${SHADERS_PATH}:&"]
+Option "searchpath" "texture" ["${TEXTURES_PATH}:&"]
+Option "statistics" "endofframe" [1]
+Projection "perspective" "fov" [10.0]
+Format ${DISPLAY_X} ${DISPLAY_Y} 1
+Display "${TEXTURES_PATH}color_layer.tif" "file" "rgba"
+#Display "+color-calculation" "framebuffer" "rgb"
+PixelSamples 2 2
+Sides 2
+ShadingRate 1
+Declare "texturename" "string"
+Rotate 90.0 1 0 0
+Rotate 180.0 0 1 0
+Rotate 0.0 0 0 1
+Translate ${TRANSLATE_X} ${TRANSLATE_Y} ${TRANSLATE_Z}
+WorldBegin
+TransformBegin
+	Translate 0.0 0.0 0.0
+    Rotate ${ROTATE_X} 1 0 0
+	Rotate ${ROTATE_Y} 0 1 0
+	Scale 1.0 1.0 1.0
+	AttributeBegin
+		Color [1.0 1.0 1.0]
+		Surface "onlytexture"  "texturename" "${HEAD_TEX}"
+		ReadArchive "${MESH_PATH}Basehead.rib"
+	AttributeEnd
+	AttributeBegin
+		Color [1.0 1.0 1.0]
+		Surface "onlytexture" "texturename" "${BODY_TEX}"
+		ReadArchive "${MESH_PATH}Basebody.rib"
+	AttributeEnd
+		AttributeBegin
+		Color [1.0 1.0 1.0]
+		Surface "onlytexture" "texturename" "${EYES_COL}"       
+		ReadArchive "${MESH_PATH}Baseeyes.rib"
+	AttributeEnd
+TransformEnd
+WorldEnd
+FrameEnd
+
+
+
+#--------------------------------------------------------------------------------
+#STEP 2: Generate a diffusion/details color map, using a skin-but-no-sss shader
+#--------------------------------------------------------------------------------
+FrameBegin 2
+Option "searchpath" "shader" ["${SHADERS_PATH}:&"]
+Option "searchpath" "texture" ["${TEXTURES_PATH}:&"]
+Option "statistics" "endofframe" [1]
+Projection "perspective" "fov" [10.0]
+Format ${DISPLAY_X} ${DISPLAY_Y} 1
+Display "${TEXTURES_PATH}diffuse_layer.tif" "file" "rgba"
+#Display "+diffuse-calculation" "framebuffer" "rgb"
+PixelSamples 2 2
+Sides 2
+Declare "intensity" "float"
+Declare "texturename" "string"
+Declare "bumptexture" "string"
+Rotate 90.0 1 0 0
+Rotate 180.0 0 1 0
+Rotate 0.0 0 0 1
+Translate ${TRANSLATE_X} ${TRANSLATE_Y} ${TRANSLATE_Z}
+WorldBegin
+LightSource "pointlight" 1 "from" [-10 15 10]  "intensity" [400]
+LightSource "distantlight" 2 "from" [-10 -15 10]  "intensity" [1.3] "to" [0 0 0] 
+LightSource "distantlight" 3 "from" [0 -10 0]  "intensity" [1.3] "to" [0 0 6]
+TransformBegin
+	Translate 0.0 0.0 0.0
+    Rotate ${ROTATE_X} 1 0 0
+	Rotate ${ROTATE_Y} 0 1 0
+	Scale 1.0 1.0 1.0	
+	AttributeBegin		
+		Color [1.0 1.0 1.0]
+		Surface "alphafur" "string texturename" "eyelashes2_color.tx"
+		ReadArchive "${MESH_PATH}Basezeyelashes.rib"
+	AttributeEnd
+	AttributeBegin
+		ShadingRate .1
+		Color [1.0 1.0 1.0]
+		Surface "alphafur" "string texturename" "${EYEB_COL}"
+		ReadArchive "${MESH_PATH}Basezeyebrows.rib"
+	AttributeEnd
+	AttributeBegin
+		Color [1.0 1.0 1.0]
+        Surface "eyes" "string texturename" "${EYES_COL}" "float roughness" [0.06] "float Kd" [0.35] "float Ka" [0.05] "float Ks" [1.5] 
+		ReadArchive "${MESH_PATH}Baseeyes.rib"
+	AttributeEnd
+	AttributeBegin
+		Color [1.0 1.0 1.0]
+		Surface "cornea" "float Ks" [2] "float roughness" [0.02] 
+		ReadArchive "${MESH_PATH}Basezcornea.rib"
+	AttributeEnd	
+	AttributeBegin
+		Attribute "displacementbound" "sphere" [ .5 ]
+		Color [1.0 1.0 1.0]
+		Displacement "skinbump" "bumptexture" "${HEAD_BUMP}" "float Km" [${KM}] "float Km2" [0.05] "float truedisp" [1]
+		Surface "skin1"  "texturename" "${HEAD_TEX}"
+		ReadArchive "${MESH_PATH}Basehead.rib"
+	AttributeEnd
+	AttributeBegin
+		Attribute "displacementbound" "sphere" [ .5 ]
+		Color [1.0 1.0 1.0]
+		Displacement "skinbump" "bumptexture" "${BODY_BUMP}" "float Km" [${KM}] "float Km2" [0.05] "float truedisp" [1]
+		Surface "skin1" "texturename" "${BODY_TEX}"
+		ReadArchive "${MESH_PATH}Basebody.rib"
+	AttributeEnd
+
+	
+TransformEnd
+WorldEnd
+FrameEnd
+
+
+#--------------------------------------------------------------------------------
+#STEP 3: Generate a camera->surface vector map, to be used in blur step
+#--------------------------------------------------------------------------------
+FrameBegin 3
+Option "searchpath" "shader" ["${SHADERS_PATH}:&"]
+Option "searchpath" "texture" ["${TEXTURES_PATH}:&"]
+Option "statistics" "endofframe" [1]
+Projection "perspective" "fov" [10.0]
+Format 400 300 1
+Display "${TEXTURES_PATH}normal_layer.tif" "file" "rgb"
+#Display "+normal-calculation" "framebuffer" "rgb"
+PixelSamples 1 1
+ShadingRate 4
+Sides 1
+Rotate 90.0 1 0 0
+Rotate 180.0 0 1 0
+Rotate 0.0 0 0 1
+Translate ${TRANSLATE_X} ${TRANSLATE_Y} ${TRANSLATE_Z}
+WorldBegin
+TransformBegin
+	Translate 0.0 0.0 0.0
+    Rotate ${ROTATE_X} 1 0 0
+	Rotate ${ROTATE_Y} 0 1 0
+	Scale 1.0 1.0 1.0
+	AttributeBegin
+		Color [1.0 1.0 1.0]
+		Surface "cameravector"
+		ReadArchive "${MESH_PATH}Basehead.rib"
+	AttributeEnd
+	AttributeBegin
+		Color [1.0 1.0 1.0]
+		Surface "cameravector"
+		ReadArchive "${MESH_PATH}Basebody.rib"
+	AttributeEnd
+	AttributeBegin
+		Color [1.0 1.0 1.0]
+		Surface "cameravector"
+		ReadArchive "${MESH_PATH}Baseeyes.rib"
+	AttributeEnd
+TransformEnd
+WorldEnd
+FrameEnd
+
+
+#--------------------------------------------------------------------------------
+#STEP 4: Generate a reflection map, to be added after blur step
+#--------------------------------------------------------------------------------
+FrameBegin 4
+Option "searchpath" "shader" ["${SHADERS_PATH}:&"]
+Option "searchpath" "texture" ["${TEXTURES_PATH}:&"]
+Option "statistics" "endofframe" [1]
+Projection "perspective" "fov" [10.0]
+Format ${DISPLAY_X} ${DISPLAY_Y} 1
+Display "${TEXTURES_PATH}reflection_layer.tif" "file" "rgb"
+#Display "+reflection-calculation" "framebuffer" "rgb"
+PixelSamples 1 1
+ShadingRate 2
+Sides 1
+Declare "intensity" "float"
+Declare "texturename" "string"
+Declare "bumptexture" "string"
+Declare "Ks" "float"
+Rotate 90.0 1 0 0
+Rotate 180.0 0 1 0
+Rotate 0.0 0 0 1
+Translate ${TRANSLATE_X} ${TRANSLATE_Y} ${TRANSLATE_Z}
+WorldBegin
+LightSource "distantlight" 1 "from" [-10 -15 10]  "intensity" [1.3] "to" [0 0 0] 
+LightSource "distantlight" 2 "from" [0 -10 0]  "intensity" [1.3] "to" [0 0 6]
+TransformBegin
+	Translate 0.0 0.0 0.0
+    Rotate ${ROTATE_X} 1 0 0
+	Rotate ${ROTATE_Y} 0 1 0
+	Scale 1.0 1.0 1.0
+	AttributeBegin
+		Color [1.0 1.0 1.0]
+		Attribute "displacementbound" "sphere" [ .5 ]
+		Displacement "skinbump" "bumptexture" "${HEAD_BUMP}" "float Km" [${KM}] "float Km2" [0.05] "float truedisp" [1]
+		Surface "onlyrefl"  "Ks" [.8]	"texturename" "${HEAD_SPEC}"
+		ReadArchive "${MESH_PATH}Basehead.rib"
+	AttributeEnd
+	AttributeBegin
+		Color [1.0 1.0 1.0]
+		Attribute "displacementbound" "sphere" [ .5 ]
+		Displacement "skinbump" "bumptexture" "${BODY_BUMP}" "float Km" [${KM}] "float Km2" [0.05] "float truedisp" [1]
+		Surface "onlyrefl"  "Ks" [.6]	"texturename" "${BODY_SPEC}" #body has not so refl as head
+		ReadArchive "${MESH_PATH}Basebody.rib"
+	AttributeEnd
+	AttributeBegin
+		Color [1.0 1.0 1.0]
+        ShadingRate .2
+		Surface "onlyrefl" "float roughness" [0.02] "float Ks" [1.5] 
+		#"string environ" "${MESH_PATH}environ.tx"
+		ReadArchive "${MESH_PATH}Baseeyes.rib"
+	AttributeEnd
+	AttributeBegin
+		Color [1.0 1.0 1.0]		
+		Surface "onlyrefl" "float roughness" [0.02] "float Ks" [1.5] 
+		#"string environ" "${MESH_PATH}environ.tx"
+		ReadArchive "${MESH_PATH}Basezcornea.rib"
+	AttributeEnd	
+TransformEnd
+WorldEnd
+FrameEnd
+
+
+#--------------------------------------------------------------------------------
+#STEP 5: Generate a alpha map for details map (to be added after blurstep): eyes, fur, clothes, hairs...
+#--------------------------------------------------------------------------------
+FrameBegin 5
+Option "searchpath" "shader" ["${SHADERS_PATH}:&"]
+Option "searchpath" "texture" ["${TEXTURES_PATH}:&"]
+Option "statistics" "endofframe" [1]
+Projection "perspective" "fov" [10.0]
+Format ${DISPLAY_X} ${DISPLAY_Y} 1 #ToDo: optimize using values/2
+Clipping 0.10000000149 100.0
+PixelSamples 2 2
+Sides 1
+Declare "intensity" "float"
+Declare "texturename" "string"
+Declare "bumptexture" "string"
+Declare "imagelighttexture" "string"
+Declare "texturerefl" "string"
+Declare "texturerefl2" "string"
+Declare "Ka" "float"
+Declare "Ks" "float"
+Declare "Kd" "float"
+Declare "imagelighttexture" "string"
+Display "${TEXTURES_PATH}alpha_details_layer.tif" "file" "rgba"
+#Display "+details" "framebuffer" "rgb"
+
+Rotate 90.0 1 0 0
+Rotate 180.0 0 1 0
+Rotate 0.0 0 0 1
+Translate ${TRANSLATE_X} ${TRANSLATE_Y} ${TRANSLATE_Z}
+
+WorldBegin
+LightSource "pointlight" 1 "from" [-10 15 10]  "intensity" [400]
+LightSource "distantlight" 1 "from" [-10 -15 10]  "intensity" [1.3] "to" [0 0 0] 
+LightSource "distantlight" 3 "from" [0 -10 0]  "intensity" [1.3] "to" [0 0 6]
+	LightSource "ambientlight" 5 "intensity" [1.0]
+TransformBegin
+	Translate 0.0 0.0 0.0
+    Rotate ${ROTATE_X} 1 0 0
+	Rotate ${ROTATE_Y} 0 1 0
+	Scale 1.0 1.0 1.0
+	AttributeBegin		
+		Color [1.0 1.0 1.0]
+		Surface "onlytexture"  "texturename" "${EYEL_ALPHA}"
+		ReadArchive "${MESH_PATH}Basezeyelashes.rib"
+	AttributeEnd
+	AttributeBegin
+		ShadingRate .1
+		Color [1.0 1.0 1.0]
+		Surface "onlytexture"  "texturename" "${EYEB_ALPHA}"
+		ReadArchive "${MESH_PATH}Basezeyebrows.rib"
+	AttributeEnd
+	AttributeBegin
+		Color [1.0 1.0 1.0]
+		Surface "onlytexture"  "texturename" "${HEAD_ALPHA}"
+		ReadArchive "${MESH_PATH}Basehead.rib"
+	AttributeEnd
+	AttributeBegin
+		Color [1.0 1.0 1.0]
+		Surface "onlytexture" "texturename" "${BODY_ALPHA}"
+		ReadArchive "${MESH_PATH}Basebody.rib"
+	AttributeEnd
+	AttributeBegin
+		Color [1.0 1.0 1.0]
+		Surface "onlytexture" "texturename" "${EYES_ALPHA}"       
+		ReadArchive "${MESH_PATH}Baseeyes.rib"
+	AttributeEnd
+TransformEnd
+WorldEnd
+FrameEnd
+
+MakeTexture "${TEXTURES_PATH}diffuse_layer.tif" "${TEXTURES_PATH}diffuse_layer.tx" "periodic" "periodic" "gaussian" 1 1
+MakeTexture "${TEXTURES_PATH}reflection_layer.tif" "${TEXTURES_PATH}reflection_layer.tx" "periodic" "periodic" "gaussian" 1 1
+MakeTexture "${TEXTURES_PATH}alpha_details_layer.tif" "${TEXTURES_PATH}alpha_details_layer.tx" "periodic" "periodic" "gaussian" 1 1
+MakeTexture "${TEXTURES_PATH}normal_layer.tif" "${TEXTURES_PATH}normal_layer.tx" "periodic" "periodic" "gaussian" 1 1
+MakeTexture "${TEXTURES_PATH}color_layer.tif" "${TEXTURES_PATH}color_layer.tx" "periodic" "periodic" "gaussian" 1 1
+
+#--------------------------------------------------------------------------------
+#STEP 6: final image
+#--------------------------------------------------------------------------------
+
+
+FrameBegin 6
+Option "searchpath" "shader" ["${SHADERS_PATH}:&"]
+Option "searchpath" "texture" ["${TEXTURES_PATH}:&"]
+Option "statistics" "endofframe" [1]
+Display "${RENDERING_PATH}final_render.tif" "file" "rgba"
+Display "+final-render" "framebuffer" "rgb"
+Format ${DISPLAY_X} ${DISPLAY_Y} 1
+PixelFilter "Box" 1 1
+PixelSamples 3 3
+Sides 2
+ShadingRate .3
+Declare "diffuseMap" "string"
+Declare "reflMap" "string"
+Declare "reflMap2" "string"
+Declare "alphaDetails" "string"
+Declare "cameraVectorsMap"	"string"		
+Declare "colorMap" "string" 
+Declare "mixVal" "float"
+Declare "oilVal" "float"
+Projection "orthographic"
+WorldBegin	
+	AttributeBegin
+	Color [ ${COLOR_R} ${COLOR_G} ${COLOR_B} ]
+	Surface "skin2" "diffuseMap" "diffuse_layer.tx"  "reflMap" "reflection_layer.tx" "alphaDetails" "alpha_details_layer.tx"	"cameraVectorsMap" "normal_layer.tx" "colorMap" "color_layer.tx" "oilVal" [${OIL_VAL}] "float sssScale" [${SSS_SCALE}]  "float Ka" [1.1]
+	Translate 0 0 0.02 #To avoid eye split
+	Polygon "P" [ -1.333 -1 0   1.333 -1 0   1.333 1 0  -1.333 1 0 ]"st" [ 0 1  1 1  1 0  0 0  ]
+    AttributeEnd
+WorldEnd
+FrameEnd
+
+
+
+
+
+
