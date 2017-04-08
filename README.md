@@ -4,7 +4,7 @@ These are the assets which are bundled with MakeHuman releases.
 
 ## Usage
 
-Note that in order to work with this repository, your git client need support for LFS, see https://git-lfs.github.com/
+Note that in order to work with this repository, your git client need support for LFS, see https://git-lfs.github.com/. On windows, the easiest solution is to use the GitHub Desktop: https://desktop.github.com/
 
 ## License
 
