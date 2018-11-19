@@ -26,6 +26,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 name teethMaterial
+tag MakeHuman™
 ambientColor 1.0 1.0 1.0
 diffuseColor 0.64 0.64 0.64
 specularColor 0.854901960784 0.854901960784 0.854901960784

@@ -26,6 +26,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 name BenchmarkMaterial
+tag MakeHuman™
 
 // Color shading attributes
 ambientColor 0.847058823529 0.847058823529 0.847058823529

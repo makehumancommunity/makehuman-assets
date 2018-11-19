@@ -26,6 +26,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 name ponytail01
+tag MakeHuman™
 ambientColor 0.11 0.11 0.11
 diffuseColor 1.0 1.0 1.0
 specularColor 0.0470588235294 0.0470588235294 0.0470588235294

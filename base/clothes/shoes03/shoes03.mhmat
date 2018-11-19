@@ -26,6 +26,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 name shoes03
+tag MakeHuman™
 ambientColor 1.0 1.0 1.0
 diffuseColor 1.0 1.0 1.0
 specularColor 0.0352941176471 0.0313725490196 0.0313725490196

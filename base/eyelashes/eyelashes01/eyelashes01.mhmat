@@ -26,6 +26,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 name bodyMaterial
+tag MakeHuman™
 
 // Color shading attributes
 ambientColor 1.0 1.0 1.0

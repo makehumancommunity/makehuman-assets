@@ -27,6 +27,7 @@
 
 name DefaultSkin
 tag MakeHuman™
+tag MakeHuman™
 
 // Color shading attributes
 ambientColor 0.11 0.11 0.11

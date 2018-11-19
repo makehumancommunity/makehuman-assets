@@ -26,6 +26,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 name Male_casualsuit01
+tag MakeHuman™
 ambientColor 1.0 1.0 1.0
 diffuseColor 1.0 1.0 1.0
 specularColor 1.0 1.0 1.0
