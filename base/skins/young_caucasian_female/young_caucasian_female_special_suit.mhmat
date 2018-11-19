@@ -41,6 +41,8 @@ backfaceCull True
 depthless False
 castShadows True
 receiveShadows True
+
+tag MakeHuman™
 tag young
 tag caucasian
 tag female

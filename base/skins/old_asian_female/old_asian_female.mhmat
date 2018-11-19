@@ -42,6 +42,7 @@ depthless False
 castShadows True
 receiveShadows True
 
+tag MakeHuman™
 tag old
 tag asian
 tag female

@@ -26,6 +26,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 name ToonSkin01
+tag MakeHuman™
 
 // Color shading attributes
 ambientColor 0.11 0.11 0.11
