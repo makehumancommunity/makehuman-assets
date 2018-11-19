@@ -26,6 +26,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 uuid df01ef58-b37f-479e-9f97-b4c1b9626aa8
 basemesh hm08
+tag MakeHuman™
+
 tag average
 tag male
 tag topology

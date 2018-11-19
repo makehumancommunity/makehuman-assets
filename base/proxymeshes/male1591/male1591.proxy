@@ -26,6 +26,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 uuid d7e4934e-daed-4ad5-a055-18c9cba487dc
 basemesh hm08
+tag MakeHuman™
+
 tag lowpoly
 description Proxy optimized for a very low poly male character (1591 vertices, 1570 FACES)
 name male1591

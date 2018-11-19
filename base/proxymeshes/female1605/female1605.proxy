@@ -26,6 +26,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 uuid e7cb8171-845e-42b0-a109-e6e8c8a61f9d
 basemesh hm08
+tag MakeHuman™
+
 tag female
 tag lowpoly
 description Proxy optimized for a very low poly female character (1605 vertices, 1584 Faces)

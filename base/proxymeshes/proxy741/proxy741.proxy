@@ -26,6 +26,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 uuid 549cb59c-dd74-445d-add2-097453bd369e
 basemesh hm08
+tag MakeHuman™
+
 tag lowpoly
 description Minimal poly character (741 vertices, 730 FACES)
 name proxy741

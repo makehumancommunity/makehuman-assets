@@ -26,6 +26,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 uuid 79e967dc-3f7a-4f2d-851e-4f06753ed571
 basemesh hm08
+tag MakeHuman™
+
 tag Male
 tag Muscle
 description Topology optimized for male muscled characters. Edgeloops are designed to include neck details, shoulders, pectoral, biceps and quadriceps.

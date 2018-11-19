@@ -26,6 +26,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 uuid 20a78cb1-52c2-4bf5-87c7-96e2638b0135
 basemesh hm08
+tag MakeHuman™
+
 tag Female
 tag Muscle
 tag Bodybuilder

@@ -26,6 +26,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 uuid 84b1a384-1af0-4126-9030-222edb78b318
 basemesh hm08
+tag MakeHuman™
+
 tag Female
 description Topology optimized for female characters. The base topology is already good, but this one includes some special loops around the stomach, knee, elbow and neck.
 name female_generic
