@@ -26,6 +26,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 uuid 52ad91a3-caad-4e50-8c38-67634e5e789c
 basemesh hm08
+tag MakeHuman™
 
 name tongue01
 obj_file tongue01.obj

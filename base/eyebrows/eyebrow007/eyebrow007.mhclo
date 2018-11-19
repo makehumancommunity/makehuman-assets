@@ -26,6 +26,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 uuid f2092456-86eb-423f-a5c6-2e0b3117d664
 basemesh hm08
+tag MakeHuman™
 
 name eyebrow007
 obj_file eyebrow007.obj

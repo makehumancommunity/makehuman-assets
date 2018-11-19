@@ -26,6 +26,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 uuid 6e0c552e-e207-44df-8f70-c9bfdeddd8c6
 basemesh hm08
+tag MakeHuman™
 tag Shoes
 
 name shoes01

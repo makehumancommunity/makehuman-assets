@@ -26,6 +26,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 uuid d533836f-13ad-4836-8b65-051108253cd2
 basemesh hm08
+tag MakeHuman™
 
 name Eyelashes01
 obj_file eyelashes01.obj

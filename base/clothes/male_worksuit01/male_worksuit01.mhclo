@@ -27,6 +27,7 @@
 
 uuid 6afd98fa-381b-456f-aa46-3dd15b27b2f0
 basemesh hm08
+tag MakeHuman™
 
 name male_worksuit01
 obj_file  male_worksuit01.obj

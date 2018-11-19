@@ -26,6 +26,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 uuid c6096ff1-46b6-4fdf-b992-49c1bc67f18b
 basemesh hm08
+tag MakeHuman™
 
 name Teeth_Shape05
 obj_file teeth_shape05.obj

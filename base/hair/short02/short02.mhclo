@@ -26,6 +26,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 uuid c104cd4a-1edc-43f9-8b94-f63345a44638
 basemesh hm08
+tag MakeHuman™
 material short02.mhmat
 name short02
 tag Short
