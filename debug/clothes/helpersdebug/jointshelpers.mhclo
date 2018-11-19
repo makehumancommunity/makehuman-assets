@@ -26,6 +26,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 uuid 2e7c7c37-1f15-48d8-b509-3b7975810424
 basemesh hm08
+tag MakeHuman™
 tag helpersdebug
 name Joints_Helpers
 obj_file jointshelpers.obj

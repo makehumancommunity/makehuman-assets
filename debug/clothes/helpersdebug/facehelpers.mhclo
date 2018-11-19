@@ -26,6 +26,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 uuid 9f8b643d-764b-4fec-a4ab-451a59a16a39
 basemesh hm08
+tag MakeHuman™
 tag helpersdebug
 name Face_Helpers
 obj_file facehelpers.obj

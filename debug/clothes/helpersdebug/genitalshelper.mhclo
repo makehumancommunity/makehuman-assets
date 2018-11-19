@@ -26,6 +26,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 uuid 83238f92-faab-4f4f-bc92-ef452ac02aa8
 basemesh hm08
+tag MakeHuman™
 tag helpersdebug
 name Genitals_Helper
 obj_file genitalshelper.obj

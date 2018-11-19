@@ -26,6 +26,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 uuid 7e2b5f83-2d71-485a-be48-31b73ba5f9da
 basemesh hm08
+tag MakeHuman™
 tag helpersdebug
 name Tights_Helper
 obj_file tightshelper.obj

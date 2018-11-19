@@ -26,6 +26,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 uuid ccdbd1a5-d36c-41d9-8212-575ed8d79fd1
 basemesh hm08
+tag MakeHuman™
 tag helpersdebug
 name Skirt_Helper
 obj_file skirthelper.obj
