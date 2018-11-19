@@ -1437,6 +1437,7 @@
     },
     "license": "GNU Affero General Public License 3",
     "name": "Game_engine",
-    "tags": ["Detailed hands","game"],
+    "tags": [
+        "MakeHuman™", "Detailed hands","game"],
     "version": 110    
 }

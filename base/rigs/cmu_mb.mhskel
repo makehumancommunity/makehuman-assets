@@ -866,6 +866,7 @@
     },
     "license": "GNU Affero General Public License 3",
     "name": "CMU compliant skeleton",
-    "tags": ["mocap"],
+    "tags": [
+        "MakeHuman™", "mocap"],
     "version": 110    
 }

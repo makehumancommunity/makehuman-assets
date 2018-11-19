@@ -3300,6 +3300,7 @@
     },
     "license": "GNU Affero General Public License 3",
     "name": "Default simplified",
-    "tags": ["facial bones", "detailed hands"],
+    "tags": [
+        "MakeHuman™", "facial bones", "detailed hands"],
     "version": 110    
 }

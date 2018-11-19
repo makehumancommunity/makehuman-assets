@@ -2,7 +2,8 @@
     "license": "AGPL3 (see also http://www.makehuman.org/doc/node/external_tools_license.html)", 
     "name": "fear03", 
     "copyright": "(c) 2016 Data Collection AB, Joel Palmius, Jonas Hauquier", 
-    "tags": [        
+    "tags": [
+        "MakeHuman™",
         "fear"
     ], 
     "author": "MakeHuman Team", 
