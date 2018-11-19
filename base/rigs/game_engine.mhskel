@@ -379,7 +379,7 @@
             "tail": "upperarm_r____tail"
         }
     },
-    "copyright": "(c) 2016 Data Collection AB, Joel Palmius, Jonas Hauquier",
+    "copyright": "(c) 2018 Data Collection AB, Joel Palmius, Jonas Hauquier",
     "description": "Skeleton optimized for game engines",
     "joints": {
         "Root____head": [

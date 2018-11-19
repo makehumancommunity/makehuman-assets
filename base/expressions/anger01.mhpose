@@ -1,7 +1,7 @@
 {
     "license": "AGPL3 (see also http://www.makehuman.org/doc/node/external_tools_license.html)", 
     "name": "anger01", 
-    "copyright": "(c) 2016 Data Collection AB, Joel Palmius, Jonas Hauquier", 
+    "copyright": "(c) 2018 Data Collection AB, Joel Palmius, Jonas Hauquier", 
     "tags": [
         "MakeHuman™",
         "anger"
