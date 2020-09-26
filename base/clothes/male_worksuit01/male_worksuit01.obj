@@ -1,7 +1,19 @@
-# Exported from MakeClothes (TM)
-# author FGH
-# license AGPL3 (see also http://www.makehuman.org/doc/node/external_tools_license.html)
-# homepage http://www.makehuman.org/
+# This is a mesh file for MakeHuman
+#
+# This asset was explicitly released as CC0 in september 2020. The license
+# text for CC0 can be found in the root of this repository.
+#
+# The copyright holders at the point of the release to CC0 were:
+#
+# Copyright (C) 2020 Data Collection AB, https://www.datacollection.se
+# Copyright (C) 2020 Joel Palmius
+# Copyright (C) 2020 Jonas Hauquier
+#
+# The primary legal contact for MakeHuman is Data Collection AB.
+#
+# For more information, see homepage at http://www.makehumancommunity.org
+#
+# basemesh hm08
 v -0.7998 12.5809 1.3860
 v -1.1455 11.8564 1.3274
 v -1.1390 11.7084 1.1965
