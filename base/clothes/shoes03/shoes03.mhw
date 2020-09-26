@@ -1,7 +1,7 @@
 {
-    "copyright": "(c) 2016 Data Collection AB, Joel Palmius, Jonas Hauquier",
+    "copyright": "(c) 2020 Data Collection AB, Joel Palmius, Jonas Hauquier",
     "description": "Very cool general-purpose skeleton",
-    "license": "GNU Affero General Public License 3",
+    "license": "CC0",
     "name": "Shoes03 weights",
     "version": 110,
     "weights": {
