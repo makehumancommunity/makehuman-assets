@@ -379,7 +379,7 @@
             "tail": "upperarm_r____tail"
         }
     },
-    "copyright": "(c) 2018 Data Collection AB, Joel Palmius, Jonas Hauquier",
+    "copyright": "(c) 2020 Data Collection AB, Joel Palmius, Jonas Hauquier",
     "description": "Skeleton optimized for game engines",
     "joints": {
         "Root____head": [
@@ -1435,7 +1435,7 @@
             14485
         ]
     },
-    "license": "GNU Affero General Public License 3",
+    "license": "CC0",
     "name": "Game_engine",
     "tags": [
         "MakeHuman™", "Detailed hands","game"],

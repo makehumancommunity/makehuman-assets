@@ -224,7 +224,7 @@
             "tail": "Spine1_tail"
         }
     },
-    "copyright": "(c) 2018 Data Collection AB, Joel Palmius, Jonas Hauquier",
+    "copyright": "(c) 2020 Data Collection AB, Joel Palmius, Jonas Hauquier",
     "description": "Optimized for Motion capture data from CMU Graphics Lab Motion Capture Database (http://mocap.cs.cmu.edu).",
     "joints": {
         "Head_head": [
@@ -864,7 +864,7 @@
             13661
         ]
     },
-    "license": "GNU Affero General Public License 3",
+    "license": "CC0",
     "name": "CMU compliant skeleton",
     "tags": [
         "MakeHuman™", "mocap"],

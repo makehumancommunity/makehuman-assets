@@ -962,7 +962,7 @@
             "tail": "wrist.R____tail"
         }
     },
-    "copyright": "(c) 2018 Data Collection AB, Joel Palmius, Jonas Hauquier",
+    "copyright": "(c) 2020 Data Collection AB, Joel Palmius, Jonas Hauquier",
     "description": "MakeHuman default skeleton with simplified feet. It includes detailed fingers and facial bones for advanced animations.",
     "joints": {
         "breast.L____head": [
@@ -3298,7 +3298,7 @@
             14461
         ]
     },
-    "license": "GNU Affero General Public License 3",
+    "license": "CC0",
     "name": "Default simplified",
     "tags": [
         "MakeHuman™", "facial bones", "detailed hands"],
