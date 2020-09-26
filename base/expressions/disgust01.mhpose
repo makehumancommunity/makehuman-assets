@@ -1,7 +1,7 @@
 {
-    "license": "AGPL3 (see also http://www.makehuman.org/doc/node/external_tools_license.html)", 
+    "license": "CC0", 
     "name": "disgust01", 
-    "copyright": "(c) 2018 Data Collection AB, Joel Palmius, Jonas Hauquier", 
+    "copyright": "(c) 2020 Data Collection AB, Joel Palmius, Jonas Hauquier", 
     "tags": [
         "MakeHuman™",
         "disgust"        
@@ -25,6 +25,6 @@
         "LeftCheekUp": 0.598, 
         "CheeksSuck": 0.01
     }, 
-    "homepage": "http://www.makehuman.org", 
+    "homepage": "http://www.makehumancommunity.org", 
     "description": "No description set"
 }

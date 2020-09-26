@@ -1,7 +1,7 @@
 {
-    "license": "AGPL3 (see also http://www.makehuman.org/doc/node/external_tools_license.html)", 
+    "license": "CC0", 
     "name": "sceptical01", 
-    "copyright": "(c) 2018 Data Collection AB, Joel Palmius, Jonas Hauquier", 
+    "copyright": "(c) 2020 Data Collection AB, Joel Palmius, Jonas Hauquier", 
     "tags": [
         "MakeHuman™",
         "doubt"
@@ -11,6 +11,6 @@
         "LeftBrowDown": 0.05, 
         "RightOuterBrowUp": 0.618
     }, 
-    "homepage": "http://www.makehuman.org", 
+    "homepage": "http://www.makehumancommunity.org", 
     "description": "No description set"
 }
