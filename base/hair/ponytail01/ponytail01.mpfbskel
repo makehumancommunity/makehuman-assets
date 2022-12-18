@@ -1,0 +1,730 @@
+{
+    "bones": {
+        "ponytail": {
+            "head": {
+                "default_position": [
+                    5e-05,
+                    0.04326,
+                    1.53389
+                ],
+                "strategy": "MEAN",
+                "vertex_indices": [
+                    2714,
+                    2804
+                ]
+            },
+            "inherit_scale": "FULL",
+            "layers": [
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+            ],
+            "parent": "root",
+            "rigify": {
+                "rigify_parameters": {
+                    "copy_rotation_axes": [
+                        false,
+                        false,
+                        false
+                    ],
+                    "roll_alignment": "manual"
+                },
+                "rigify_type": "limbs.simple_tentacle"
+            },
+            "roll": 0.0,
+            "tail": {
+                "default_position": [
+                    0.0,
+                    0.0688,
+                    1.51969
+                ],
+                "strategy": "MEAN",
+                "vertex_indices": [
+                    445,
+                    1377
+                ]
+            },
+            "use_connect": false,
+            "use_inherit_rotation": true,
+            "use_local_location": true
+        },
+        "ponytail1": {
+            "bendy_bone": {
+                "easein": 0.0,
+                "segments": 4
+            },
+            "head": {
+                "default_position": [
+                    0.0,
+                    0.0688,
+                    1.51969
+                ],
+                "strategy": "MEAN",
+                "vertex_indices": [
+                    445,
+                    1377
+                ]
+            },
+            "inherit_scale": "FULL",
+            "layers": [
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+            ],
+            "parent": "ponytail",
+            "rigify": {},
+            "roll": -0.00141,
+            "tail": {
+                "default_position": [
+                    0.0001,
+                    0.07996,
+                    1.469
+                ],
+                "strategy": "MEAN",
+                "vertex_indices": [
+                    1266,
+                    1282
+                ]
+            },
+            "use_connect": true,
+            "use_inherit_rotation": true,
+            "use_local_location": true
+        },
+        "ponytail2": {
+            "bendy_bone": {
+                "segments": 4
+            },
+            "head": {
+                "default_position": [
+                    0.0001,
+                    0.07996,
+                    1.469
+                ],
+                "strategy": "MEAN",
+                "vertex_indices": [
+                    1266,
+                    1282
+                ]
+            },
+            "inherit_scale": "FULL",
+            "layers": [
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+            ],
+            "parent": "ponytail1",
+            "rigify": {},
+            "roll": 0.0,
+            "tail": {
+                "default_position": [
+                    0.00095,
+                    0.08504,
+                    1.40889
+                ],
+                "strategy": "MEAN",
+                "vertex_indices": [
+                    1297,
+                    1371
+                ]
+            },
+            "use_connect": true,
+            "use_inherit_rotation": true,
+            "use_local_location": true
+        },
+        "ponytail3": {
+            "bendy_bone": {
+                "segments": 4
+            },
+            "head": {
+                "default_position": [
+                    0.00095,
+                    0.08504,
+                    1.40889
+                ],
+                "strategy": "MEAN",
+                "vertex_indices": [
+                    1297,
+                    1371
+                ]
+            },
+            "inherit_scale": "FULL",
+            "layers": [
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+            ],
+            "parent": "ponytail2",
+            "rigify": {},
+            "roll": 0.0,
+            "tail": {
+                "default_position": [
+                    0.00013,
+                    0.08447,
+                    1.33985
+                ],
+                "strategy": "MEAN",
+                "vertex_indices": [
+                    228,
+                    1167
+                ]
+            },
+            "use_connect": true,
+            "use_inherit_rotation": true,
+            "use_local_location": true
+        },
+        "ponytail4": {
+            "bendy_bone": {
+                "segments": 4
+            },
+            "head": {
+                "default_position": [
+                    0.00013,
+                    0.08447,
+                    1.33985
+                ],
+                "strategy": "MEAN",
+                "vertex_indices": [
+                    228,
+                    1167
+                ]
+            },
+            "inherit_scale": "FULL",
+            "layers": [
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+            ],
+            "parent": "ponytail3",
+            "rigify": {},
+            "roll": 0.0,
+            "tail": {
+                "default_position": [
+                    -0.00019,
+                    0.07948,
+                    1.25599
+                ],
+                "strategy": "MEAN",
+                "vertex_indices": [
+                    1178,
+                    1356
+                ]
+            },
+            "use_connect": true,
+            "use_inherit_rotation": true,
+            "use_local_location": true
+        },
+        "root": {
+            "constraints": [
+                {
+                    "name": "Child Of",
+                    "owner_space": "POSE",
+                    "set_inverse_pending": false,
+                    "subtarget": "head",
+                    "target": {
+                        "joint_head": "joint-head",
+                        "joint_tail": "joint-head-2",
+                        "strategy": "JOINTS"
+                    },
+                    "type": "CHILD_OF",
+                    "use_location_x": true,
+                    "use_location_y": true,
+                    "use_location_z": true,
+                    "use_rotation_x": true,
+                    "use_rotation_y": true,
+                    "use_rotation_z": true,
+                    "use_scale_x": true,
+                    "use_scale_y": true,
+                    "use_scale_z": true
+                }
+            ],
+            "head": {
+                "default_position": [
+                    5e-05,
+                    0.04326,
+                    1.53389
+                ],
+                "strategy": "MEAN",
+                "vertex_indices": [
+                    2714,
+                    2804
+                ]
+            },
+            "inherit_scale": "FULL",
+            "layers": [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                false,
+                false,
+                false
+            ],
+            "parent": "",
+            "rigify": {},
+            "roll": 0.0,
+            "tail": {
+                "default_position": [
+                    0.00026,
+                    0.04175,
+                    1.5558
+                ],
+                "strategy": "MEAN",
+                "vertex_indices": [
+                    2851,
+                    2895
+                ]
+            },
+            "use_connect": false,
+            "use_inherit_rotation": true,
+            "use_local_location": true
+        }
+    },
+    "is_subrig": true,
+    "rigify_ui": {
+        "colors": [
+            {
+                "name": "Root",
+                "normal": [
+                    0.43529415130615234,
+                    0.18431372940540314,
+                    0.41568630933761597
+                ]
+            },
+            {
+                "name": "IK",
+                "normal": [
+                    0.6039215922355652,
+                    0.0,
+                    0.0
+                ]
+            },
+            {
+                "name": "Special",
+                "normal": [
+                    0.9568628072738647,
+                    0.7882353663444519,
+                    0.0470588281750679
+                ]
+            },
+            {
+                "name": "Tweak",
+                "normal": [
+                    0.03921568766236305,
+                    0.21176472306251526,
+                    0.5803921818733215
+                ]
+            },
+            {
+                "name": "FK",
+                "normal": [
+                    0.11764706671237946,
+                    0.5686274766921997,
+                    0.03529411926865578
+                ]
+            },
+            {
+                "name": "Extra",
+                "normal": [
+                    0.9686275124549866,
+                    0.250980406999588,
+                    0.0941176563501358
+                ]
+            }
+        ],
+        "layers": [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+        ],
+        "rigify_colors_lock": true,
+        "rigify_layers": [
+            {
+                "group": 5,
+                "name": "FK",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 4,
+                "name": "Tweak",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": " ",
+                "row": 1,
+                "selset": false
+            },
+            {
+                "group": 0,
+                "name": "Root",
+                "row": 14,
+                "selset": false
+            }
+        ],
+        "selection_colors": {
+            "active": [
+                0.5490000247955322,
+                1.0,
+                1.0
+            ],
+            "select": [
+                0.3140000104904175,
+                0.7839999794960022,
+                1.0
+            ]
+        }
+    },
+    "scale_factor": 0.1,
+    "version": 100
+}
